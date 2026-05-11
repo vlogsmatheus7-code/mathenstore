@@ -5,54 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhes | MTH STORE</title>
     <style>
-        :root { --gold: #d4af37; --dark-bg: #050505; --card-bg: #111; }
-        body { margin: 0; padding: 0; background-color: var(--dark-bg); color: white; font-family: 'Segoe UI', sans-serif; padding-bottom: 50px; }
+        :root { --gold: #d4af37; }
+        body { margin: 0; padding: 0; background-color: #050505; color: white; font-family: 'Segoe UI', sans-serif; padding-bottom: 50px; }
         
         header { 
-            background-color: #000; 
-            padding: 15px 0; 
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3); 
-            text-align: center;
-            position: relative;
+            background-color: #000; padding: 15px 0; border-bottom: 1px solid var(--gold); 
+            text-align: center; position: relative;
         }
         .btn-voltar { 
             position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
-            text-decoration: none; color: var(--gold); font-weight: bold; font-size: 1.5rem; 
+            text-decoration: none; color: var(--gold); font-size: 1.5rem; 
         }
-        .logo-container { height: 50px; display: flex; justify-content: center; align-items: center; }
-        .logo-img { height: 100%; max-height: 45px; }
+        .brand-name-sm {
+            margin: 0; font-family: 'Times New Roman', serif; letter-spacing: 4px;
+            color: var(--gold); font-size: 1.2rem; text-transform: uppercase;
+        }
+        .brand-name-sm span { color: #fff; font-family: sans-serif; font-size: 0.8rem; letter-spacing: 2px; }
 
         .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
-
-        .galeria-container { background: var(--card-bg); border-radius: 20px; padding: 15px; border: 1px solid #222; margin-bottom: 20px; }
-        .foto-principal-box { width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 12px; background: #000; margin-bottom: 15px; }
+        .galeria-container { background: #111; border-radius: 20px; padding: 15px; border: 1px solid #222; margin-bottom: 20px; }
+        .foto-principal-box { width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #000; margin-bottom: 15px; }
         .foto-principal { max-width: 100%; max-height: 100%; object-fit: contain; }
         
-        .miniaturas-container { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
-        .miniatura { width: 65px; height: 65px; border-radius: 8px; border: 2px solid #333; cursor: pointer; object-fit: cover; opacity: 0.4; transition: 0.3s; flex-shrink: 0; }
+        .miniaturas-container { display: flex; gap: 10px; overflow-x: auto; }
+        .miniatura { width: 65px; height: 65px; border-radius: 8px; border: 2px solid #333; cursor: pointer; object-fit: cover; opacity: 0.4; }
         .miniatura.active { border-color: var(--gold); opacity: 1; }
 
-        .detalhes-box { background: var(--card-bg); border-radius: 20px; padding: 25px; border: 1px solid #222; }
-        .product-title { margin: 0 0 10px 0; font-size: 1.7rem; text-transform: uppercase; }
-        .tag-gb-lg { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-size: 0.8rem; padding: 4px 12px; border-radius: 6px; font-weight: bold; margin-bottom: 15px; }
+        .detalhes-box { background: #111; border-radius: 20px; padding: 25px; border: 1px solid #222; }
+        .product-title { margin: 0; font-size: 1.7rem; }
+        .tag-gb-lg { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-size: 0.8rem; padding: 4px 12px; border-radius: 6px; margin: 10px 0; }
+        .valor-lg { font-size: 2.2rem; font-weight: bold; color: white; display: block; margin-bottom: 20px; }
         
-        .valor-lg { font-size: 2.2rem; font-weight: bold; color: white; display: block; margin: 5px 0 20px 0; }
-        
-        .pagamento-grid { border-top: 1px solid #222; padding-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .pag-item { font-size: 0.9rem; color: #bbb; display: flex; align-items: center; gap: 8px; }
-        .juros-aviso { grid-column: span 2; font-size: 0.8rem; color: #ffa500; font-style: italic; margin-top: 10px; text-align: center; }
-
-        .btn-add-cart { display: block; width: 100%; padding: 20px; background: var(--gold); color: black; border: none; border-radius: 40px; font-weight: bold; font-size: 1.2rem; cursor: pointer; margin-top: 30px; transition: 0.3s; }
-        .btn-add-cart:hover { transform: scale(1.02); }
+        .pagamento-grid { border-top: 1px solid #222; padding-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.9rem; color: #bbb; }
+        .btn-add-cart { display: block; width: 100%; padding: 20px; background: var(--gold); color: black; border: none; border-radius: 40px; font-weight: bold; font-size: 1.2rem; margin-top: 30px; }
     </style>
 </head>
 <body>
 
 <header>
     <a href="index.html" class="btn-voltar">←</a>
-    <div class="logo-container">
-        <img src="logo-dourado.png?v=1" alt="MTH STORE" class="logo-img">
-    </div>
+    <h1 class="brand-name-sm">MTH <span>STORE</span></h1>
 </header>
 
 <div class="container">
@@ -62,16 +54,14 @@
     </div>
 
     <div class="detalhes-box">
-        <h1 id="productTitle" class="product-title"></h1>
+        <h1 id="productTitle"></h1>
         <span id="tagGb" class="tag-gb-lg"></span>
         <span id="productPrice" class="valor-lg"></span>
 
         <div class="pagamento-grid">
-            <div class="pag-item">✅ PIX (Desconto)</div>
-            <div class="pag-item">💳 Crédito 12x</div>
-            <div class="pag-item">💵 Dinheiro</div>
-            <div class="pag-item">📱 Original Apple</div>
-            <div class="juros-aviso">* No cartão, juros da maquininha por conta do comprador.</div>
+            <div>✅ PIX (Desconto)</div>
+            <div>💳 Crédito 12x</div>
+            <div style="grid-column: span 2; color: #ffa500; font-style: italic;">* No cartão, juros por conta do comprador.</div>
         </div>
 
         <button onclick="addToCart()" class="btn-add-cart">Adicionar ao Carrinho</button>
@@ -91,21 +81,17 @@
     function carregar() {
         const id = new URLSearchParams(window.location.search).get('id');
         const p = dadosProdutos[id] || dadosProdutos['16promax'];
-
         document.getElementById('productTitle').innerText = p.nome;
         document.getElementById('tagGb').innerText = p.gb;
         document.getElementById('productPrice').innerText = 'R$ ' + p.preco;
-        
         const principal = document.getElementById('fotoPrincipal');
-        const minis = document.getElementById('miniaturasContainer');
         principal.src = p.fotos[0];
-
+        const minis = document.getElementById('miniaturasContainer');
         p.fotos.forEach((link, i) => {
             const img = document.createElement('img');
-            img.src = link;
-            img.className = 'miniatura' + (i === 0 ? ' active' : '');
-            img.onclick = () => {
-                principal.src = link;
+            img.src = link; img.className = 'miniatura' + (i === 0 ? ' active' : '');
+            img.onclick = () => { 
+                principal.src = link; 
                 document.querySelectorAll('.miniatura').forEach(m => m.classList.remove('active'));
                 img.classList.add('active');
             };
