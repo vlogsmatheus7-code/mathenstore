@@ -20,26 +20,34 @@
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
+        /* CABEÇALHO COM LOGO NO FUNDO */
         header {
-            padding: 40px 20px;
+            padding: 80px 20px;
             text-align: center;
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            background-color: var(--dark-bg);
+            background-image: url('https://i.ibb.co/LzdYmYmC/logo-mathen.jpg');
+            background-size: contain; /* A logo fica no fundo */
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
         }
 
-        /* LOGO CENTRALIZADA E MAIOR */
-        .logo-img {
-            width: 120px; 
-            height: 120px;
-            border-radius: 50%;
-            border: 2px solid var(--gold);
-            margin-bottom: 15px;
-            object-fit: cover;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        /* Camada escura para o texto não sumir sobre a logo */
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.75); 
+            z-index: 1;
+        }
+
+        .logo-main, .sub-header {
+            position: relative;
+            z-index: 2; /* Joga o texto para a frente da logo */
         }
 
         .logo-main {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: bold;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -49,7 +57,7 @@
 
         .sub-header {
             color: var(--gold);
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             margin-top: 10px;
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -79,8 +87,9 @@
             transform: scale(1.01);
         }
 
+        /* AJUSTE DAS IMAGENS: Zoom padronizado para todas */
         .img-box {
-            width: 80px; height: 80px;
+            width: 85px; height: 85px;
             margin-right: 15px;
             background: #111;
             border-radius: 12px;
@@ -89,12 +98,14 @@
             justify-content: center;
             overflow: hidden;
             flex-shrink: 0;
+            border: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .img-box img {
-            width: 130%; 
-            height: 130%;
+            width: 100%; /* Ajuste para não cortar e preencher */
+            height: 100%;
             object-fit: contain;
+            transform: scale(1.3); /* Dá um zoom leve para destacar o aparelho */
         }
 
         .info-box {
@@ -103,7 +114,7 @@
             padding-right: 10px;
         }
 
-        .info-box h3 { margin: 0; font-size: 1rem; text-transform: uppercase; }
+        .info-box h3 { margin: 0; font-size: 1.1rem; text-transform: uppercase; }
 
         .tag-gb {
             display: inline-block;
@@ -112,12 +123,12 @@
             font-size: 0.7rem;
             padding: 2px 8px;
             border-radius: 5px;
-            margin-top: 5px;
+            margin-top: 6px;
         }
 
         .price-box { min-width: 130px; text-align: right; padding-left: 10px; }
         .price-label { font-size: 0.55rem; color: var(--gold); text-transform: uppercase; }
-        .valor { font-size: 1.2rem; font-weight: bold; }
+        .valor { font-size: 1.4rem; font-weight: bold; }
 
         .footer-info {
             text-align: center;
@@ -145,13 +156,14 @@
             text-decoration: none;
             font-weight: bold;
             font-size: 1.1rem;
+            transition: 0.3s;
         }
 
         .btn-wpp { background-color: #25d366; color: white; }
         .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); color: white; }
 
         @media (max-width: 600px) {
-            .logo-img { width: 100px; height: 100px; }
+            .img-box { width: 70px; height: 70px; }
             .valor { font-size: 1.1rem; }
             .price-box { min-width: 110px; }
         }
@@ -160,7 +172,6 @@
 <body>
 
 <header>
-    <img src="https://i.ibb.co/LzdYmYmC/logo-mathen.jpg" class="logo-img" alt="Logo Mathen Store">
     <h1 class="logo-main">MATHEN <span>STORE</span></h1>
     <div class="sub-header">Tabela de Preços</div>
 </header>
