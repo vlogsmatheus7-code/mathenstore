@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathenStore - iPhones</title>
+    <title>MathenStore - iPhones Premium</title>
     <style>
         body {
             margin: 0;
@@ -12,6 +12,7 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
+        /* Cabeçalho Profissional */
         .main-header {
             background-color: #1d1d1f;
             padding: 15px 0;
@@ -30,49 +31,48 @@
             padding: 0 20px;
         }
 
-        .logo { font-size: 1.5rem; font-weight: bold; margin: 0; }
+        .logo { font-size: 1.5rem; font-weight: bold; margin: 0; text-decoration: none; color: white; }
         .logo span { color: #0071e3; }
 
-        .btn-header {
-            background-color: #0071e3;
-            padding: 8px 18px;
-            border-radius: 20px;
-            color: white;
+        .nav-links a {
+            color: #f5f5f7;
             text-decoration: none;
-            font-weight: 500;
+            margin-left: 20px;
             font-size: 0.9rem;
+            transition: color 0.3s;
         }
 
-        /* Banner de Destaque (Aumentando o site) */
+        .nav-links a:hover { color: #0071e3; }
+
+        /* Banner de Destaque (Hero) */
         .hero {
             background-color: #000;
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px;
         }
-        .hero h2 { font-size: 3rem; margin: 0; }
-        .hero p { font-size: 1.2rem; color: #86868b; margin-top: 10px; }
+        .hero h2 { font-size: 3.5rem; margin: 0; letter-spacing: -2px; }
+        .hero p { font-size: 1.4rem; color: #86868b; margin: 15px 0 30px; }
 
         /* Faixa de Benefícios */
         .benefits {
             background: white;
-            padding: 25px 20px;
+            padding: 30px 20px;
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 50px;
             flex-wrap: wrap;
             border-bottom: 1px solid #d2d2d7;
-            font-size: 0.9rem;
-            font-weight: 500;
         }
+        .benefit-item { text-align: center; font-weight: 500; font-size: 0.95rem; }
 
         /* Grade de Produtos */
         .container {
             max-width: 1100px;
-            margin: 40px auto;
-            padding: 20px;
+            margin: 50px auto;
+            padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
@@ -89,64 +89,86 @@
 
         .produto-imagem img {
             width: 100%;
-            height: 250px;
-            object-fit: contain; /* Ajustado para não cortar a foto */
+            height: 300px;
+            object-fit: contain;
             background-color: #fff;
             padding-top: 20px;
         }
 
-        .produto-info { padding: 25px; }
-        .produto-info h3 { margin: 0; font-size: 1.4rem; color: #1d1d1f; }
-        .capacidade { color: #86868b; margin: 8px 0; }
-        .preco { font-size: 1.7rem; font-weight: bold; color: #1d1d1f; margin: 20px 0; }
+        .produto-info { padding: 30px; }
+        .produto-info h3 { margin: 0; font-size: 1.5rem; color: #1d1d1f; }
+        .capacidade { color: #86868b; margin: 10px 0; }
+        .preco { font-size: 1.8rem; font-weight: bold; color: #1d1d1f; margin: 20px 0; }
 
         .botao-whatsapp {
             display: block;
             background-color: #25d366;
             color: white;
             text-decoration: none;
-            padding: 14px;
-            border-radius: 12px;
+            padding: 16px;
+            border-radius: 14px;
             font-weight: bold;
-            transition: background 0.3s;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
         }
 
-        .botao-whatsapp:hover { background-color: #128c7e; }
-
-        /* Rodapé Profissional */
-        footer {
-            background: #1d1d1f;
-            color: #86868b;
-            padding: 60px 20px;
+        /* Seção Instagram */
+        .instagram-section {
+            background-color: #fff;
+            padding: 80px 20px;
             text-align: center;
             margin-top: 50px;
         }
-        .footer-logo { color: white; margin-bottom: 15px; display: block; font-size: 1.2rem; font-weight: bold; }
+        .instagram-section h3 { font-size: 2rem; margin-bottom: 10px; }
+        .btn-instagram {
+            display: inline-block;
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        /* Rodapé Completo */
+        footer {
+            background: #1d1d1f;
+            color: #86868b;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        .footer-logo { color: white; font-size: 1.5rem; font-weight: bold; margin-bottom: 20px; display: block; }
+        .footer-links a { color: #86868b; text-decoration: none; margin: 0 10px; font-size: 0.9rem; }
+        .footer-links a:hover { color: white; }
     </style>
 </head>
 <body>
 
     <header class="main-header">
         <div class="header-container">
-            <h1 class="logo">Mathen<span>Store</span></h1>
-            <a href="https://wa.me/5581985666394" class="btn-header">WhatsApp</a>
+            <a href="#" class="logo">Mathen<span>Store</span></a>
+            <nav class="nav-links">
+                <a href="#produtos">Estoque</a>
+                <a href="https://www.instagram.com/mathenstore/" target="_blank">Instagram</a>
+                <a href="https://wa.me/5581985666394" style="background:#0071e3; color:white; padding: 8px 15px; border-radius: 20px; text-decoration:none; font-size:0.9rem;">WhatsApp</a>
+            </nav>
         </div>
     </header>
 
-    <!-- Novo Banner -->
     <section class="hero">
-        <h2>O iPhone que você procura.</h2>
-        <p>Aparelhos selecionados com garantia e o melhor preço de Pernambuco.</p>
+        <h2>Padrão Apple em cada detalhe.</h2>
+        <p>A melhor vitrine de iPhones de Recife. Qualidade, garantia e preço justo.</p>
+        <a href="#produtos" style="color: #0071e3; text-decoration: none; font-weight: 500;">Conheça nosso estoque ></a>
     </section>
 
-    <!-- Faixa de Confiança -->
     <section class="benefits">
-        <span>🚚 Entrega em mãos em Recife</span>
-        <span>🛡️ Garantia MathenStore</span>
-        <span>💎 Procedência Garantida</span>
+        <div class="benefit-item">📍 Retirada em mãos (Recife)</div>
+        <div class="benefit-item">💳 Parcelamos em até 12x</div>
+        <div class="benefit-item">🔄 Aceitamos seu usado</div>
     </section>
 
-    <div class="container">
+    <div class="container" id="produtos">
         
         <div class="produto-card">
             <div class="produto-imagem">
@@ -154,9 +176,9 @@
             </div>
             <div class="produto-info">
                 <h3>iPhone 14 Plus</h3>
-                <p class="capacidade">256GB • seminovo</p>
+                <p class="capacidade">256GB • Seminovo</p>
                 <div class="preco">R$ 2.600,00</div>
-                <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone+14+Plus" class="botao-whatsapp">Comprar</a>
+                <a href="https://wa.me/5581985666394?text=Olá!+Vi+o+iPhone+14+Plus+no+site" target="_blank" class="botao-whatsapp">Comprar via WhatsApp</a>
             </div>
         </div>
 
@@ -165,10 +187,10 @@
                 <img src="iphone15promax.jpg" alt="iPhone 15 Pro Max">
             </div>
             <div class="produto-info">
-                <h3>iPhone 15 pro max</h3>
-                <p class="capacidade">512GB • seminovo</p>
+                <h3>iPhone 15 Pro Max</h3>
+                <p class="capacidade">512GB • Seminovo</p>
                 <div class="preco">R$ 4.599,00</div>
-                <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone+15+pro+max" class="botao-whatsapp">Comprar</a>
+                <a href="https://wa.me/5581985666394?text=Olá!+Vi+o+iPhone+15+Pro+Max+no+site" target="_blank" class="botao-whatsapp">Comprar via WhatsApp</a>
             </div>
         </div>
 
@@ -177,20 +199,30 @@
                 <img src="iphone14promax.jpg" alt="iPhone 14 Pro Max">
             </div>
             <div class="produto-info">
-                <h3>iPhone 14 pro max </h3>
-                <p class="capacidade">256GB •seminovo </p>
+                <h3>iPhone 14 Pro Max</h3>
+                <p class="capacidade">256GB • Titânio</p>
                 <div class="preco">R$ 3.599,00</div>
-                <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone+14+pro+max" class="botao-whatsapp">Comprar</a>
+                <a href="https://wa.me/5581985666394?text=Olá!+Vi+o+iPhone+14+Pro+Max+no+site" target="_blank" class="botao-whatsapp">Comprar via WhatsApp</a>
             </div>
         </div>
 
     </div>
 
-    <!-- Novo Rodapé -->
+    <section class="instagram-section">
+        <h3>Siga nossa vitrine</h3>
+        <p>Acompanhe os novos aparelhos que chegam todos os dias.</p>
+        <a href="https://www.instagram.com/mathenstore/" target="_blank" class="btn-instagram">@mathenstore no Instagram</a>
+    </section>
+
     <footer>
         <span class="footer-logo">Mathen<span>Store</span></span>
-        <p>Especialista em Apple em Recife/PE</p>
-        <p>© 2026 Todos os direitos reservados.</p>
+        <div class="footer-links">
+            <a href="#produtos">Estoque</a>
+            <a href="https://www.instagram.com/mathenstore/">Instagram</a>
+            <a href="https://wa.me/5581985666394">WhatsApp</a>
+        </div>
+        <p style="margin-top: 40px;">Recife, Pernambuco - Enviamos para todo Brasil.</p>
+        <p style="font-size: 0.8rem;">© 2026 MathenStore. Todos os direitos reservados.</p>
     </footer>
 
 </body>
