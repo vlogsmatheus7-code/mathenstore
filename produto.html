@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto | MathenStore</title>
+    <style>
+        :root { --gold: #d4af37; --dark-bg: #050505; --card-bg: #111; }
+        body { margin: 0; padding: 0; background-color: var(--dark-bg); color: white; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; padding-bottom: 50px; }
+        
+        /* HEADER SIMPLES COM BOTÃO VOLTAR */
+        header { padding: 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); display: flex; align-items: center; background: #000; }
+        .btn-voltar { text-decoration: none; color: var(--gold); font-weight: bold; font-size: 1.2rem; margin-right: 20px; }
+        .logo-sm { font-size: 1.2rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
+        .logo-sm span { color: var(--gold); }
+
+        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+
+        /* SISTEMA DE GALERIA (ESTILO SHOPEE) */
+        .galeria-container { background: var(--card-bg); border-radius: 15px; padding: 15px; border: 1px solid #222; margin-bottom: 20px; }
+        .foto-principal-box { width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px; margin-bottom: 15px; background: #000; }
+        .foto-principal { max-width: 100%; max-height: 100%; object-fit: contain; }
+        
+        .miniaturas-container { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 5px; }
+        .miniatura { width: 60px; height: 60px; border-radius: 8px; border: 2px solid #333; cursor: pointer; object-fit: cover; opacity: 0.6; transition: 0.3s; }
+        .miniatura:hover, .miniatura.active { border-color: var(--gold); opacity: 1; }
+
+        /* DETALHES DO PRODUTO */
+        .detalhes-box { background: var(--card-bg); border-radius: 15px; padding: 20px; border: 1px solid #222; }
+        .product-title { margin: 0 0 10px 0; font-size: 1.5rem; text-transform: uppercase; color: white; }
+        .tag-gb-lg { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-size: 0.8rem; padding: 4px 12px; border-radius: 6px; font-weight: bold; margin-bottom: 15px; }
+        
+        .price-lg-box { margin-top: 10px; border-top: 1px solid #222; padding-top: 15px; }
+        .price-label-lg { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; display: block; margin-bottom: 5px; }
+        .valor-lg { font-size: 2.2rem; font-weight: bold; color: white; }
+
+        .btn-comprar-lg { display: block; text-align: center; background: #25d366; color: white; padding: 18px; text-decoration: none; border-radius: 35px; font-weight: bold; font-size: 1.2rem; margin-top: 25px; transition: 0.3s; }
+        .btn-comprar-lg:hover { transform: scale(1.02); background: #20b958; }
+
+        @media (max-width: 500px) { .foto-principal-box { height: 250px; } .valor-lg { font-size: 1.8rem; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html" class="btn-voltar">&#10229;</a>
+    <div class="logo-sm">MATHEN <span>STORE</span></div>
+</header>
+
+<div class="container">
+    <div class="galeria-container">
+        <div class="foto-principal-box">
+            <img id="fotoPrincipal" src="" alt="Foto Principal" class="foto-principal">
+        </div>
+        <div id="miniaturasContainer" class="miniaturas-container">
+            </div>
+    </div>
+
+    <div class="detalhes-box">
+        <h1 id="productTitle" class="product-title"></h1>
+        <span id="tagGb" class="tag-gb-lg"></span>
+        
+        <div class="price-lg-box">
+            <span class="price-label-lg">Valor à vista (PIX)</span>
+            <span id="productPrice" class="valor-lg"></span>
+        </div>
+
+        <a id="btnWppLg" href="#" target="_blank" class="btn-comprar-lg">Garantir este aparelho</a>
+    </div>
+</div>
+
+<script>
+    // DATA BASE - AQUI VOCÊ CADASTRA AS FOTOS REAIS E DETALHES DE CADA IPHONE
+    const dadosProdutos = {
+        '16promax': {
+            nome: 'iPhone 16 Pro Max',
+            gb: '512GB',
+            preco: '5.400,00',
+            fotos: [
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg', // Foto 1
+                'https://via.placeholder.com/600x600/111/d4af37?text=Foto+Real+2', // Foto 2 (Substitua)
+                'https://via.placeholder.com/600x600/111/d4af37?text=Foto+Real+3'  // Foto 3 (Substitua)
+            ]
+        },
+        '15promax': {
+            nome: 'iPhone 15 Pro Max',
+            gb: '512GB',
+            preco: '4.400,00',
+            fotos: [
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg',
+                'https://via.placeholder.com/600x600/111/d4af37?text=Foto+2'
+            ]
+        },
+        '14promax': {
+            nome: 'iPhone 14 Pro Max',
+            gb: '256GB',
+            preco: '3.600,00',
+            fotos: [
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209?wid=1000&fmt=p-jpg'
+            ]
+        },
+        '13promax': {
+            nome: 'iPhone 13 Pro Max',
+            gb: '256GB',
+            preco: '3.100,00',
+            fotos: [
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=1000&fmt=p-jpg'
+            ]
+        },
+        '14plus': {
+            nome: 'iPhone 14 Plus',
+            gb: '128GB',
+            preco: '2.500,00',
+            fotos: [
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-starlight?wid=1000&fmt=p-jpg'
+            ]
+        },
+        'iphone13': {
+            nome: 'iPhone 13',
+            gb: '128GB',
+            preco: '2.100,00',
+            fotos: [
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-midnight?wid=1000&fmt=p-jpg'
+            ]
+        }
+    };
+
+    // FUNÇÃO QUE PREENCHE A PÁGINA COM OS DADOS DO PRODUTO CLICADO
+    function carregarProduto() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const produtoId = urlParams.get('id');
+
+        if (!produtoId || !dadosProdutos[produtoId]) {
+            window.location.href = 'index.html'; // Se der erro, volta pra lista
+            return;
+        }
+
+        const produto = dadosProdutos[produtoId];
+
+        // Preenche os textos
+        document.getElementById('productTitle').innerText = produto.nome;
+        document.getElementById('tagGb').innerText = produto.gb;
+        document.getElementById('productPrice').innerText = 'R$ ' + produto.preco;
+        document.getElementById('btnWppLg').href = `https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+${produto.nome}+${produto.gb}+de+R$+${produto.preco}`;
+        
+        // Configura o título da aba do navegador
+        document.title = `${produto.nome} | MathenStore`;
+
+        // Preenche a Galeria
+        const fotoPrincipal = document.getElementById('fotoPrincipal');
+        const miniaturasContainer = document.getElementById('miniaturasContainer');
+
+        if (produto.fotos && produto.fotos.length > 0) {
+            fotoPrincipal.src = produto.fotos[0]; // Define a primeira foto como principal
+            
+            produto.fotos.forEach((link, index) => {
+                const img = document.createElement('img');
+                img.src = link;
+                img.className = 'miniatura';
+                if (index === 0) img.classList.add('active'); // Destaca a primeira
+                
+                // Evento de clique na miniatura para trocar a foto principal
+                img.onclick = function() {
+                    fotoPrincipal.src = link;
+                    // Remove classe active de todas e coloca na clicada
+                    document.querySelectorAll('.miniatura').forEach(m => m.classList.remove('active'));
+                    img.classList.add('active');
+                };
+                
+                miniaturasContainer.appendChild(img);
+            });
+        }
+    }
+
+    // Executa ao carregar a página
+    window.onload = carregarProduto;
+</script>
+
+</body>
+</html>
