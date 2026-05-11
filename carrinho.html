@@ -3,113 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Carrinho | MathenStore</title>
+    <title>Meu Carrinho | MTH STORE</title>
     <style>
         :root { --gold: #d4af37; }
         body { background: #050505; color: white; font-family: 'Segoe UI', sans-serif; padding: 20px; margin: 0; }
         .container { max-width: 500px; margin: 20px auto; }
         h2 { border-bottom: 1px solid var(--gold); padding-bottom: 15px; text-transform: uppercase; letter-spacing: 2px; }
+        
         .item-cart { background: #111; padding: 15px; border-radius: 12px; margin-bottom: 12px; border: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
         .item-info b { display: block; font-size: 1.1rem; }
         .item-info small { color: var(--gold); font-weight: bold; }
-        .total-box { text-align: right; margin: 20px 0; padding: 15px; border-top: 1px solid #333; }
-        .total-box span { font-size: 1.8rem; color: var(--gold); font-weight: bold; }
-        .pagamento-box { background: #111; padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 20px; }
-        .pagamento-box label { display: block; margin-bottom: 10px; font-size: 0.9rem; color: #888; }
-        select { width: 100%; padding: 12px; background: #222; color: white; border: 1px solid var(--gold); border-radius: 8px; outline: none; font-size: 1rem; }
-        
-        /* AVISO DE JUROS */
-        .aviso-juros { font-size: 0.75rem; color: #ffa500; margin-top: 10px; display: block; text-align: center; font-style: italic; }
 
-        .btn-checkout { display: block; width: 100%; padding: 20px; background: #25d366; color: white; text-align: center; border-radius: 40px; text-decoration: none; font-weight: bold; font-size: 1.2rem; transition: 0.3s; box-sizing: border-box; }
-        .btn-checkout:hover { background: #1eb954; transform: scale(1.02); }
-        .btn-limpar { background: none; border: none; color: #ff4444; width: 100%; margin-top: 25px; cursor: pointer; font-size: 0.9rem; text-decoration: underline; }
-        .voltar { display: block; text-align: center; color: var(--gold); margin-top: 20px; text-decoration: none; font-size: 0.9rem; }
+        .total-box { text-align: right; margin: 25px 0; padding: 15px; border-top: 1px solid #333; }
+        .total-box span { font-size: 1.8rem; color: var(--gold); font-weight: bold; }
+
+        .pagamento-box { background: #111; padding: 20px; border-radius: 15px; border: 1px solid #222; margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; font-size: 0.9rem; color: #888; }
+        select { width: 100%; padding: 15px; background: #222; color: white; border: 1px solid var(--gold); border-radius: 10px; font-size: 1rem; outline: none; }
+        
+        .aviso { font-size: 0.8rem; color: #ffa500; margin-top: 10px; display: block; text-align: center; }
+
+        .btn-enviar { display: block; width: 100%; padding: 20px; background: #25d366; color: white; text-align: center; border-radius: 40px; text-decoration: none; font-weight: bold; font-size: 1.2rem; margin-top: 10px; box-sizing: border-box; }
+        .btn-limpar { background: none; border: none; color: #ff4444; width: 100%; margin-top: 30px; cursor: pointer; text-decoration: underline; font-size: 0.9rem; }
+        .voltar { display: block; text-align: center; color: var(--gold); margin-top: 20px; text-decoration: none; }
     </style>
 </head>
 <body>
-
 <div class="container">
     <h2>🛒 Seu Carrinho</h2>
-    <div id="listaCarrinho"></div>
+    <div id="lista"></div>
 
     <div class="total-box">
-        <p style="margin:0; font-size: 0.9rem; color: #888;">Total à vista (PIX):</p>
-        <span id="valorTotal">R$ 0,00</span>
+        <p style="margin:0; color:#888">Total à vista:</p>
+        <span id="total">R$ 0,00</span>
     </div>
 
     <div class="pagamento-box">
         <label>Forma de pagamento:</label>
-        <select id="metodoPagamento">
-            <option value="PIX">PIX (À vista com desconto)</option>
+        <select id="metodo">
+            <option value="PIX">PIX (Com Desconto)</option>
             <option value="Cartão de Crédito">Cartão de Crédito (Até 12x)</option>
             <option value="Dinheiro / Espécie">Dinheiro / Espécie</option>
         </select>
-        <span class="aviso-juros">* No cartão, incidem juros da maquininha por conta do comprador.</span>
+        <span class="aviso">* No cartão, juros da máquina por conta do comprador.</span>
     </div>
 
-    <a href="#" onclick="enviarWhatsApp()" class="btn-checkout">Finalizar no WhatsApp</a>
-    <button onclick="esvaziarCarrinho()" class="btn-limpar">Limpar todos os itens</button>
-    <a href="index.html" class="voltar">← Continuar Comprando</a>
+    <a href="#" onclick="enviar()" class="btn-enviar">Finalizar no WhatsApp</a>
+    <button onclick="limpar()" class="btn-limpar">Esvaziar Carrinho</button>
+    <a href="index.html" class="voltar">← Voltar para a Loja</a>
 </div>
 
 <script>
-    function carregarItens() {
+    function carregar() {
         const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        const lista = document.getElementById('listaCarrinho');
-        const totalExibicao = document.getElementById('valorTotal');
-        let somaTotal = 0;
+        const lista = document.getElementById('lista');
+        let total = 0;
 
         if (cart.length === 0) {
-            lista.innerHTML = '<p style="text-align:center; padding: 40px 0; color: #555;">O carrinho está vazio...</p>';
-            totalExibicao.innerText = 'R$ 0,00';
+            lista.innerHTML = '<p style="text-align:center; color:#555">Carrinho vazio...</p>';
             return;
         }
 
-        lista.innerHTML = '';
-        cart.forEach((item) => {
-            lista.innerHTML += `
-                <div class="item-cart">
-                    <div class="item-info">
-                        <b>${item.nome}</b>
-                        <small>${item.gb}</small>
-                    </div>
-                    <div style="font-weight: bold;">R$ ${item.preco}</div>
-                </div>`;
-            let precoNumerico = parseFloat(item.preco.replace('.', '').replace(',', '.'));
-            somaTotal += precoNumerico;
-        });
-
-        totalExibicao.innerText = 'R$ ' + somaTotal.toLocaleString('pt-BR', {minimumFractionDigits: 2});
-    }
-
-    function enviarWhatsApp() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        if (cart.length === 0) { alert('Carrinho vazio!'); return; }
-
-        const metodo = document.getElementById('metodoPagamento').value;
-        let mensagem = '*NOVO PEDIDO - MATHEN STORE*%0A%0A';
-        
         cart.forEach(item => {
-            mensagem += `• *${item.nome}* (${item.gb}) - R$ ${item.preco}%0A`;
+            lista.innerHTML += `<div class="item-cart"><div class="item-info"><b>${item.nome}</b><small>${item.gb}</small></div><div>R$ ${item.preco}</div></div>`;
+            total += parseFloat(item.preco.replace('.','').replace(',','.'));
         });
-
-        mensagem += `%0A*Forma de Pagamento:* ${metodo}`;
-        if(metodo === "Cartão de Crédito") {
-            mensagem += `%0A_(Estou ciente dos juros da maquininha)_`;
-        }
-
-        window.location.href = `https://wa.me/5581985666394?text=${mensagem}`;
+        document.getElementById('total').innerText = 'R$ ' + total.toLocaleString('pt-BR', {minimumFractionDigits: 2});
     }
 
-    function esvaziarCarrinho() {
-        if(confirm('Limpar carrinho?')) {
-            localStorage.removeItem('cart');
-            carregarItens();
-        }
+    function enviar() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        if (cart.length === 0) return;
+        const metodo = document.getElementById('metodo').value;
+        let msg = '*NOVO PEDIDO - MTH STORE*%0A%0A';
+        cart.forEach(i => msg += `• *${i.nome}* (${i.gb})%0A`);
+        msg += `%0A*Pagamento:* ${metodo}`;
+        if(metodo === "Cartão de Crédito") msg += `%0A_(Ciente dos juros da máquina)_`;
+        window.location.href = `https://wa.me/5581985666394?text=${msg}`;
     }
-    carregarItens();
+
+    function limpar() {
+        if(confirm('Limpar tudo?')) { localStorage.removeItem('cart'); location.reload(); }
+    }
+    carregar();
 </script>
-
 </body>
 </html>
