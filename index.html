@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathenStore | Tabela de Preços</title>
+    <title>MathenStore | Tabela de Preços Premium</title>
     <style>
         :root {
             --gold: #d4af37;
@@ -29,7 +29,7 @@
         }
 
         .logo-main {
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: bold;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -39,7 +39,7 @@
 
         .sub-header {
             color: var(--gold);
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             margin-top: 15px;
             text-transform: uppercase;
             letter-spacing: 4px;
@@ -47,19 +47,19 @@
         }
 
         .container {
-            max-width: 900px;
-            margin: 50px auto;
-            padding: 0 20px;
+            max-width: 850px;
+            margin: 40px auto;
+            padding: 0 15px;
         }
 
         .produto-row {
             display: flex;
             align-items: center;
             background: var(--card-bg);
-            border: 1px solid rgba(212, 175, 55, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.4);
             border-radius: 18px;
-            margin-bottom: 20px;
-            padding: 20px;
+            margin-bottom: 15px;
+            padding: 15px 20px;
             transition: all 0.3s ease;
             text-decoration: none;
             color: white;
@@ -67,39 +67,40 @@
 
         .produto-row:hover {
             border-color: var(--gold);
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
-            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            transform: scale(1.01);
         }
 
-        /* AJUSTE FINAL DAS IMAGENS: Agora todas ficam grandes */
+        /* BOX DE IMAGEM COM ZOOM PADRONIZADO */
         .img-box {
-            width: 110px; 
-            height: 110px;
-            margin-right: 25px;
-            background: rgba(255,255,255,0.03);
+            width: 90px; 
+            height: 90px;
+            margin-right: 20px;
+            background: #111;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden; /* Corta o excesso do zoom */
             border: 1px solid rgba(212, 175, 55, 0.1);
-            overflow: hidden;
+            flex-shrink: 0;
         }
 
         .img-box img {
-            width: 130%; /* Aumenta o zoom da imagem para preencher melhor */
-            height: 130%;
-            object-fit: contain;
+            width: 140%; /* Aumenta o tamanho da foto dentro do quadrado */
+            height: 140%;
+            object-fit: contain; /* Mantém o formato sem achatar */
         }
 
         .info-box {
             flex-grow: 1;
-            border-right: 1px solid rgba(212, 175, 55, 0.3);
-            padding-right: 15px;
+            border-right: 1px solid rgba(212, 175, 55, 0.2);
+            padding-right: 10px;
         }
 
         .info-box h3 {
             margin: 0;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -108,72 +109,81 @@
             display: inline-block;
             border: 1px solid var(--gold);
             color: var(--gold);
-            font-size: 0.75rem;
-            padding: 3px 10px;
-            border-radius: 6px;
-            margin-top: 8px;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 5px;
+            margin-top: 6px;
             font-weight: bold;
         }
 
         .price-box {
-            min-width: 160px;
+            min-width: 150px;
             text-align: right;
-            padding-left: 20px;
+            padding-left: 15px;
         }
 
         .price-label {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: var(--gold);
             text-transform: uppercase;
             display: block;
             margin-bottom: 2px;
-            letter-spacing: 1px;
         }
 
         .valor {
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: bold;
-            color: white;
         }
 
+        /* BOTÕES IGUAIS E CENTRALIZADOS */
         .footer-info {
             text-align: center;
-            margin-top: 80px;
-            padding: 60px 20px;
+            margin-top: 60px;
+            padding: 40px 20px;
             border-top: 1px solid rgba(212, 175, 55, 0.3);
-            background: linear-gradient(0deg, rgba(10,10,10,1) 0%, rgba(0,0,0,1) 100%);
+        }
+
+        .social-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         .social-btn {
-            display: inline-block;
-            margin: 15px;
-            padding: 15px 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%; /* Garante que ambos tenham o mesmo tamanho */
+            padding: 18px 0;
             border-radius: 40px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: 0.3s;
         }
 
-        .btn-wpp { background-color: #25d366; color: white; border: 2px solid transparent; }
-        .btn-wpp:hover { background-color: transparent; border-color: #25d366; color: #25d366; }
+        .btn-wpp { background-color: #25d366; color: white; }
+        .btn-ig { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white; }
 
-        .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); color: white; border: 2px solid transparent; }
-        .btn-ig:hover { background: transparent; border-color: #bc1888; color: white; }
+        .social-btn:hover { opacity: 0.8; transform: translateY(-2px); }
 
         .location {
             color: var(--text-gray);
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             margin-top: 40px;
+            letter-spacing: 1px;
         }
 
         @media (max-width: 600px) {
-            .produto-row { padding: 15px; }
-            .img-box { width: 80px; height: 80px; margin-right: 15px; }
-            .info-box h3 { font-size: 1rem; }
-            .valor { font-size: 1.3rem; }
-            .price-box { min-width: 100%; text-align: left; padding-left: 95px; margin-top: -15px; border-top: 1px solid rgba(212,175,55,0.1); padding-top: 10px; }
-            .social-btn { display: block; margin: 10px auto; width: 85%; }
+            .produto-row { padding: 12px; }
+            .img-box { width: 75px; height: 75px; margin-right: 15px; }
+            .info-box h3 { font-size: 0.95rem; }
+            .valor { font-size: 1.2rem; }
+            .price-box { min-width: 120px; padding-left: 10px; }
+            .social-btn { width: 90%; }
         }
     </style>
 </head>
@@ -181,12 +191,12 @@
 
 <header>
     <h1 class="logo-main">MATHEN <span>STORE</span></h1>
-    <div class="sub-header">Tabela de Preços Premium</div>
+    <div class="sub-header">Tabela de Preços</div>
 </header>
 
 <div class="container">
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+16+Pro+Max" target="_blank" class="produto-row">
+    <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+16+Pro+Max" target="_blank" class="produto-row">
         <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg" alt="16 Pro Max"></div>
         <div class="info-box">
             <h3>iPhone 16 Pro Max</h3>
@@ -198,7 +208,7 @@
         </div>
     </a>
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+15+Pro+Max" target="_blank" class="produto-row">
+    <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+15+Pro+Max" target="_blank" class="produto-row">
         <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg" alt="15 Pro Max"></div>
         <div class="info-box">
             <h3>iPhone 15 Pro Max</h3>
@@ -210,7 +220,7 @@
         </div>
     </a>
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+14+Pro+Max" target="_blank" class="produto-row">
+    <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+14+Pro+Max" target="_blank" class="produto-row">
         <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209?wid=1000&fmt=p-jpg" alt="14 Pro Max"></div>
         <div class="info-box">
             <h3>iPhone 14 Pro Max</h3>
@@ -222,7 +232,7 @@
         </div>
     </a>
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+13+Pro+Max" target="_blank" class="produto-row">
+    <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+13+Pro+Max" target="_blank" class="produto-row">
         <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=1000&fmt=p-jpg" alt="13 Pro Max"></div>
         <div class="info-box">
             <h3>iPhone 13 Pro Max</h3>
@@ -234,7 +244,7 @@
         </div>
     </a>
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+14+Plus" target="_blank" class="produto-row">
+    <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+14+Plus" target="_blank" class="produto-row">
         <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-starlight?wid=1000&fmt=p-jpg" alt="14 Plus"></div>
         <div class="info-box">
             <h3>iPhone 14 Plus</h3>
@@ -246,7 +256,7 @@
         </div>
     </a>
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+13" target="_blank" class="produto-row">
+    <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone+13" target="_blank" class="produto-row">
         <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-midnight?wid=1000&fmt=p-jpg" alt="iPhone 13"></div>
         <div class="info-box">
             <h3>iPhone 13</h3>
@@ -261,9 +271,11 @@
 </div>
 
 <div class="footer-info">
-    <a href="https://wa.me/5581985666394" target="_blank" class="social-btn btn-wpp">Chamar no WhatsApp</a>
-    <a href="https://www.instagram.com/mathenstore/" target="_blank" class="btn-ig">Seguir no Instagram</a>
-    <p class="location">Recife, Pernambuco - Mathen Store © 2026</p>
+    <div class="social-container">
+        <a href="https://wa.me/5581985666394" target="_blank" class="social-btn btn-wpp">Falar no WhatsApp</a>
+        <a href="https://www.instagram.com/mathenstore/" target="_blank" class="social-btn btn-ig">Seguir no Instagram</a>
+    </div>
+    <p class="location">Recife, PE | Mathen Store © 2026</p>
 </div>
 
 </body>
