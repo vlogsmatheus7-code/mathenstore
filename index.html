@@ -7,37 +7,36 @@
     <style>
         :root { --gold: #d4af37; }
 
-        /* FUNDO DE LUXO EM TODA A TELA */
+        /* FUNDO PRETO TOTAL E FIXO */
         html, body {
             margin: 0;
             padding: 0;
             min-height: 100vh;
             width: 100%;
-            /* Imagem de fundo que cobre tudo e fica fixa */
-            background-image: url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop') !important;
-            background-size: cover !important;
-            background-position: center !important;
-            background-attachment: fixed !important; /* Faz os celulares rolarem por cima */
-            background-color: #050505;
+            /* Usando uma textura de fibra de carbono/mármore escuro neutra */
+            background-image: url('https://www.transparenttextures.com/patterns/dark-matter.png'), 
+                              radial-gradient(circle at center, #1a1a1a 0%, #000000 100%) !important;
+            background-attachment: fixed !important;
+            background-color: #000 !important;
             color: white;
             font-family: 'Segoe UI', sans-serif;
         }
 
-        /* Camada escura para dar contraste aos celulares */
+        /* Camada de reforço para garantir que o fundo seja fosco e luxuoso */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.6); 
+            background: rgba(0, 0, 0, 0.7); 
             z-index: -1;
         }
 
         header { 
-            background: rgba(0, 0, 0, 0.85); 
+            background: rgba(0, 0, 0, 0.9); 
             padding: 40px 0; 
             text-align: center;
             border-bottom: 2px solid var(--gold); 
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
         }
 
         .logo-img {
@@ -47,27 +46,29 @@
 
         .container { max-width: 850px; margin: 30px auto; padding: 0 15px 100px 15px; }
 
-        /* LISTA DE PRODUTOS COM EFEITO DE VIDRO */
+        /* CARDS COM EFEITO DE VIDRO (GLASSMORPHISM) */
         .produto-link { text-decoration: none; color: white; display: block; margin-bottom: 18px; }
         .produto-row { 
             display: flex; 
             align-items: center; 
-            background: rgba(20, 20, 20, 0.7) !important; 
+            background: rgba(25, 25, 25, 0.6) !important; 
             border: 1px solid rgba(212, 175, 55, 0.2); 
             border-radius: 20px; 
             padding: 22px; 
             transition: 0.4s;
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(20px); /* Deixa ver o fundo de leve mas focado */
+            -webkit-backdrop-filter: blur(20px);
         }
         .produto-row:hover { 
             border-color: var(--gold); 
             transform: translateY(-5px);
-            background: rgba(30, 30, 30, 0.8) !important;
+            background: rgba(40, 40, 40, 0.8) !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .img-box { 
             width: 95px; height: 95px; margin-right: 20px; 
-            background: rgba(0,0,0,0.4); border-radius: 15px; 
+            background: #000; border-radius: 15px; 
             display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; 
         }
         .img-box img { width: 110%; object-fit: contain; }
