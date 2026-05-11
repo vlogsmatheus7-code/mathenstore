@@ -7,40 +7,38 @@
     <style>
         :root {
             --gold: #d4af37;
-            --dark-overlay: rgba(0, 0, 0, 0.85); /* Camada para dar leitura ao texto */
         }
 
         body {
             margin: 0;
             padding: 0;
-            /* FUNDO COM A IMAGEM QUE VOCÊ ENVIOU */
-            background-image: url('https://i.ibb.co/68v8pPr/background-mathen.jpg');
-            background-attachment: fixed; /* A imagem fica parada enquanto o site rola */
+            /* O LINK ABAIXO BUSCA A FOTO QUE VOCÊ SUBIU NO SEU GITHUB */
+            background-image: url('fundo.jpg');
+            background-attachment: fixed;
             background-size: cover;
             background-position: center;
             color: white;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
         }
 
-        /* Camada escura por cima do fundo para os preços aparecerem bem */
+        /* Camada escura para dar leitura aos preços */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--dark-overlay);
+            background: rgba(0, 0, 0, 0.8);
             z-index: -1;
         }
 
         header {
-            padding: 40px 20px;
+            padding: 50px 20px;
             text-align: center;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .logo-main {
-            font-size: 2.2rem;
+            font-size: 2.5rem;
             font-weight: bold;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
             margin: 0;
         }
@@ -48,43 +46,43 @@
 
         .sub-header {
             color: var(--gold);
-            font-size: 1.4rem;
-            margin-top: 15px;
+            font-size: 1.2rem;
+            margin-top: 10px;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
         }
 
         .container {
-            max-width: 850px;
-            margin: 40px auto;
+            max-width: 800px;
+            margin: 20px auto;
             padding: 0 15px;
         }
 
         .produto-row {
             display: flex;
             align-items: center;
-            background: rgba(10, 10, 10, 0.8); /* Fundo semi-transparente para as linhas */
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            border-radius: 18px;
-            margin-bottom: 15px;
-            padding: 15px 20px;
+            background: rgba(15, 15, 15, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 15px;
+            margin-bottom: 12px;
+            padding: 15px;
             text-decoration: none;
             color: white;
             transition: 0.3s;
-            backdrop-filter: blur(5px); /* Efeito de vidro */
+            backdrop-filter: blur(10px);
         }
 
         .produto-row:hover {
             border-color: var(--gold);
-            transform: scale(1.01);
-            background: rgba(20, 20, 20, 0.9);
+            transform: scale(1.02);
+            background: rgba(25, 25, 25, 0.8);
         }
 
         .img-box {
-            width: 85px; height: 85px;
-            margin-right: 20px;
+            width: 80px; height: 80px;
+            margin-right: 15px;
             background: rgba(255,255,255,0.05);
-            border-radius: 12px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -110,30 +108,28 @@
             display: inline-block;
             border: 1px solid var(--gold);
             color: var(--gold);
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             padding: 2px 8px;
-            border-radius: 5px;
-            margin-top: 6px;
+            border-radius: 4px;
+            margin-top: 5px;
         }
 
-        .price-box { min-width: 140px; text-align: right; padding-left: 15px; }
-        .price-label { font-size: 0.6rem; color: var(--gold); text-transform: uppercase; }
-        .valor { font-size: 1.4rem; font-weight: bold; }
+        .price-box { min-width: 130px; text-align: right; padding-left: 10px; }
+        .price-label { font-size: 0.55rem; color: var(--gold); text-transform: uppercase; }
+        .valor { font-size: 1.3rem; font-weight: bold; }
 
         .footer-info {
             text-align: center;
-            margin-top: 60px;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(212, 175, 55, 0.3);
-            background: rgba(0,0,0,0.8);
+            margin-top: 40px;
+            padding: 30px 20px;
         }
 
         .social-container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 15px;
-            max-width: 400px;
+            gap: 12px;
+            max-width: 350px;
             margin: 0 auto;
         }
 
@@ -142,11 +138,11 @@
             align-items: center;
             justify-content: center;
             width: 100%;
-            padding: 18px 0;
-            border-radius: 40px;
+            padding: 16px 0;
+            border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: 0.3s;
         }
 
@@ -154,12 +150,11 @@
         .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); color: white; }
 
         @media (max-width: 600px) {
-            .logo-main { font-size: 1.6rem; }
-            .sub-header { font-size: 1.1rem; }
-            .produto-row { padding: 12px; }
-            .img-box { width: 70px; height: 70px; margin-right: 15px; }
-            .valor { font-size: 1.2rem; }
-            .price-box { min-width: 110px; }
+            .logo-main { font-size: 1.8rem; }
+            .produto-row { padding: 10px; }
+            .img-box { width: 60px; height: 60px; }
+            .valor { font-size: 1.1rem; }
+            .price-box { min-width: 100px; }
         }
     </style>
 </head>
@@ -167,44 +162,32 @@
 
 <header>
     <h1 class="logo-main">MATHEN <span>STORE</span></h1>
-    <div class="sub-header">Tabela de Preços</div>
+    <div class="sub-header">Premium iPhones</div>
 </header>
 
 <div class="container">
     <a href="https://wa.me/5581985666394" target="_blank" class="produto-row">
         <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg"></div>
         <div class="info-box"><h3>iPhone 16 Pro Max</h3><span class="tag-gb">512GB</span></div>
-        <div class="price-box"><span class="price-label">Valor de Venda</span><span class="valor">R$ 5.400,00</span></div>
+        <div class="price-box"><span class="price-label">Venda</span><span class="valor">R$ 5.400</span></div>
     </a>
 
     <a href="https://wa.me/5581985666394" target="_blank" class="produto-row">
         <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg"></div>
         <div class="info-box"><h3>iPhone 15 Pro Max</h3><span class="tag-gb">512GB</span></div>
-        <div class="price-box"><span class="price-label">Valor de Venda</span><span class="valor">R$ 4.400,00</span></div>
+        <div class="price-box"><span class="price-label">Venda</span><span class="valor">R$ 4.400</span></div>
     </a>
 
     <a href="https://wa.me/5581985666394" target="_blank" class="produto-row">
         <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209?wid=1000&fmt=p-jpg"></div>
         <div class="info-box"><h3>iPhone 14 Pro Max</h3><span class="tag-gb">256GB</span></div>
-        <div class="price-box"><span class="price-label">Valor de Venda</span><span class="valor">R$ 3.600,00</span></div>
+        <div class="price-box"><span class="price-label">Venda</span><span class="valor">R$ 3.600</span></div>
     </a>
 
     <a href="https://wa.me/5581985666394" target="_blank" class="produto-row">
         <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=1000&fmt=p-jpg"></div>
         <div class="info-box"><h3>iPhone 13 Pro Max</h3><span class="tag-gb">256GB</span></div>
-        <div class="price-box"><span class="price-label">Valor de Venda</span><span class="valor">R$ 3.100,00</span></div>
-    </a>
-
-    <a href="https://wa.me/5581985666394" target="_blank" class="produto-row">
-        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-starlight?wid=1000&fmt=p-jpg"></div>
-        <div class="info-box"><h3>iPhone 14 Plus</h3><span class="tag-gb">126GB</span></div>
-        <div class="price-box"><span class="price-label">Valor de Venda</span><span class="valor">R$ 2.500,00</span></div>
-    </a>
-
-    <a href="https://wa.me/5581985666394" target="_blank" class="produto-row">
-        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-midnight?wid=1000&fmt=p-jpg"></div>
-        <div class="info-box"><h3>iPhone 13</h3><span class="tag-gb">128GB</span></div>
-        <div class="price-box"><span class="price-label">Valor de Venda</span><span class="valor">R$ 2.100,00</span></div>
+        <div class="price-box"><span class="price-label">Venda</span><span class="valor">R$ 3.100</span></div>
     </a>
 </div>
 
@@ -213,7 +196,6 @@
         <a href="https://wa.me/5581985666394" target="_blank" class="social-btn btn-wpp">Falar no WhatsApp</a>
         <a href="https://www.instagram.com/mathenstore/" target="_blank" class="social-btn btn-ig">Seguir no Instagram</a>
     </div>
-    <p style="color: #888; font-size: 0.8rem; margin-top: 30px;">Recife, PE | Mathen Store © 2026</p>
 </div>
 
 </body>
