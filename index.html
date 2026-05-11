@@ -6,54 +6,143 @@
     <title>MTH STORE | Premium iPhones</title>
     <style>
         :root { --gold: #d4af37; }
+
+        /* FUNDO DE LUXO TOTAL */
         html, body {
             margin: 0; padding: 0; min-height: 100vh; width: 100%;
             background-image: url('fundo-preto-premium.jpg') !important; 
             background-size: cover; background-position: center; background-attachment: fixed;
             background-color: #050505; color: white; font-family: 'Segoe UI', sans-serif;
         }
+
+        /* Camada para legibilidade */
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.4); z-index: -1;
         }
+
         header { 
             background: rgba(0, 0, 0, 0.9); padding: 40px 0; text-align: center;
             border-bottom: 2px solid var(--gold); backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,1);
         }
+
         .logo-img { max-width: 200px; filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6)); }
+
         .container { max-width: 850px; margin: 30px auto; padding: 0 15px 100px 15px; }
+
+        /* LISTA DE PRODUTOS */
         .produto-link { text-decoration: none; color: white; display: block; margin-bottom: 18px; }
         .produto-row { 
-            display: flex; align-items: center; background: rgba(15, 15, 15, 0.8); 
+            display: flex; align-items: center; background: rgba(15, 15, 15, 0.85); 
             border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; padding: 22px; 
             transition: 0.4s; backdrop-filter: blur(15px);
         }
-        .produto-row:hover { border-color: var(--gold); transform: scale(1.02); }
-        .img-box { width: 90px; height: 90px; margin-right: 20px; background: rgba(0,0,0,0.5); border-radius: 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .produto-row:hover { border-color: var(--gold); transform: scale(1.02); background: rgba(25, 25, 25, 0.95); }
+
+        .img-box { width: 90px; height: 90px; margin-right: 20px; background: rgba(0,0,0,0.5); border-radius: 15px; display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; }
         .img-box img { width: 110%; object-fit: contain; }
+
         .info-box { flex-grow: 1; border-right: 1px solid rgba(212, 175, 55, 0.1); padding-right: 15px; }
-        .info-box h3 { margin: 0; font-size: 1.3rem; text-transform: uppercase; }
+        .info-box h3 { margin: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
         .tag-gb { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-size: 0.7rem; padding: 4px 12px; border-radius: 6px; margin-top: 10px; font-weight: bold; }
-        .valor { font-size: 1.5rem; font-weight: bold; }
-        .social-btn { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 400px; padding: 20px; border-radius: 50px; text-decoration: none; font-weight: bold; margin: 15px auto; transition: 0.3s; }
+
+        .price-box { min-width: 130px; text-align: right; padding-left: 15px; }
+        .valor { font-size: 1.4rem; font-weight: bold; color: #fff; }
+
+        /* CARRINHO FLUTUANTE */
+        .cart-float { 
+            position: fixed; bottom: 30px; right: 30px; 
+            background: var(--gold); color: black; width: 65px; height: 65px; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 1.6rem; text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,0.6); z-index: 999; 
+        }
+        .cart-count { 
+            position: absolute; top: -5px; right: -5px; background: #ff0000; color: white; 
+            font-size: 0.75rem; width: 24px; height: 24px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid black;
+        }
+
+        /* BOTÕES SOCIAIS */
+        .social-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 50px; }
+        .social-btn { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 400px; padding: 20px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: 0.3s; }
         .btn-wa { background-color: #25d366; color: white; }
         .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); color: white; }
     </style>
 </head>
 <body>
-<header><img src="logo-dourado.png" alt="MTH STORE" class="logo-img"></header>
+
+<header>
+    <img src="logo-dourado.png" alt="MTH STORE" class="logo-img">
+    <div style="color: var(--gold); font-size: 0.65rem; letter-spacing: 5px; margin-top: 15px; text-transform: uppercase;"> Apple Premium Specialist</div>
+</header>
+
 <div class="container">
     <a href="produto.html?id=16promax" class="produto-link">
         <div class="produto-row">
             <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg"></div>
             <div class="info-box"><h3>iPhone 16 Pro Max</h3><span class="tag-gb">512GB</span></div>
-            <div class="price-box" style="text-align: right; min-width: 120px;"><span class="valor">R$ 5.400</span></div>
+            <div class="price-box"><span class="valor">R$ 5.400</span></div>
         </div>
     </a>
+    
+    <a href="produto.html?id=15promax" class="produto-link">
+        <div class="produto-row">
+            <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg"></div>
+            <div class="info-box"><h3>iPhone 15 Pro Max</h3><span class="tag-gb">512GB</span></div>
+            <div class="price-box"><span class="valor">R$ 4.400</span></div>
+        </div>
+    </a>
+
+    <a href="produto.html?id=14promax" class="produto-link">
+        <div class="produto-row">
+            <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209?wid=1000&fmt=p-jpg"></div>
+            <div class="info-box"><h3>iPhone 14 Pro Max</h3><span class="tag-gb">256GB</span></div>
+            <div class="price-box"><span class="valor">R$ 3.600</span></div>
+        </div>
+    </a>
+
+    <a href="produto.html?id=13promax" class="produto-link">
+        <div class="produto-row">
+            <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=1000&fmt=p-jpg"></div>
+            <div class="info-box"><h3>iPhone 13 Pro Max</h3><span class="tag-gb">256GB</span></div>
+            <div class="price-box"><span class="valor">R$ 3.100</span></div>
+        </div>
+    </a>
+
+    <a href="produto.html?id=14plus" class="produto-link">
+        <div class="produto-row">
+            <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-starlight?wid=1000&fmt=p-jpg"></div>
+            <div class="info-box"><h3>iPhone 14 Plus</h3><span class="tag-gb">128GB</span></div>
+            <div class="price-box"><span class="valor">R$ 2.500</span></div>
+        </div>
+    </a>
+
+    <a href="produto.html?id=iphone13" class="produto-link">
+        <div class="produto-row">
+            <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-midnight?wid=1000&fmt=p-jpg"></div>
+            <div class="info-box"><h3>iPhone 13</h3><span class="tag-gb">128GB</span></div>
+            <div class="price-box"><span class="valor">R$ 2.100</span></div>
+        </div>
+    </a>
+
     <div class="social-container">
-        <a href="https://wa.me/5581985666394" class="social-btn btn-wa">Comprar no WhatsApp</a>
-        <a href="https://www.instagram.com/mathenstore/" class="social-btn btn-ig">Acompanhar Instagram</a>
+        <a href="https://wa.me/5581985666394" target="_blank" class="social-btn btn-wa">Chamar no WhatsApp</a>
+        <a href="https://www.instagram.com/mathenstore/" target="_blank" class="social-btn btn-ig">Acompanhar Instagram</a>
     </div>
 </div>
+
+<a href="carrinho.html" class="cart-float">
+    🛒 <span id="cartCount" class="cart-count">0</span>
+</a>
+
+<script>
+    function updateCartCount() {
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        document.getElementById('cartCount').innerText = cart.length;
+    }
+    updateCartCount();
+</script>
+
 </body>
 </html>
