@@ -12,7 +12,6 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
-        /* Cabeçalho Profissional */
         .main-header {
             background-color: #1d1d1f;
             padding: 15px 0;
@@ -41,27 +40,16 @@
             color: #0071e3;
         }
 
-        nav a {
-            color: #f5f5f7;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #0071e3;
-        }
-
         .btn-header {
             background-color: #0071e3;
             padding: 8px 18px;
             border-radius: 20px;
+            color: white;
+            text-decoration: none;
             font-weight: 500;
-            transition: opacity 0.3s;
+            font-size: 0.9rem;
         }
 
-        /* Seção do Produto */
         .add-phone {
             padding: 60px 20px;
             text-align: center;
@@ -85,7 +73,8 @@
             width: 100%;
             height: auto;
             display: block;
-            background-color: #fafafa;
+            background-color: #eee;
+            min-height: 250px;
         }
 
         .produto-info {
@@ -96,7 +85,6 @@
             margin: 0;
             font-size: 1.6rem;
             color: #1d1d1f;
-            letter-spacing: -0.5px;
         }
 
         .capacidade {
@@ -112,7 +100,6 @@
             margin: 25px 0;
         }
 
-        /* Botão WhatsApp */
         .botao-whatsapp {
             display: block;
             background-color: #25d366;
@@ -135,24 +122,20 @@
     <header class="main-header">
         <div class="header-container">
             <h1 class="logo">Mathen<span>Store</span></h1>
-            <nav>
-                <a href="#">Início</a>
-                <a href="https://wa.me/5581985666394" class="btn-header">Falar Conosco</a>
-            </nav>
+            <a href="https://wa.me/5581985666394" class="btn-header">WhatsApp</a>
         </div>
     </header>
 
     <section class="add-phone">
         <div class="produto-card">
             <div class="produto-imagem">
-                <!-- Certifique-se de subir a imagem iphone14plus.jpg para o GitHub -->
                 <img src="iphone14plus.jpg" alt="iPhone 14 Plus">
             </div>
             <div class="produto-info">
                 <h3>iPhone 14 Plus</h3>
                 <p class="capacidade">256GB • Novo Lacrado</p>
                 <div class="preco">R$ 2.600,00</div>
-                <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+14+Plus+da+loja" target="_blank" class="botao-whatsapp">
+                <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+14+Plus" target="_blank" class="botao-whatsapp">
                     Comprar via WhatsApp
                 </a>
             </div>
