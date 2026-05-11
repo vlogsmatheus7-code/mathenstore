@@ -36,18 +36,33 @@
         .thumb:hover, .thumb.active { opacity: 1; border-color: var(--gold); }
 
         .info-card { 
-            background: rgba(0,0,0,0.6); padding: 25px; border-radius: 20px; 
+            background: rgba(0,0,0,0.7); padding: 25px; border-radius: 20px; 
             border: 1px solid rgba(212, 175, 55, 0.1); margin-top: 20px;
         }
         h1 { font-size: 1.8rem; margin: 10px 0; text-transform: uppercase; }
-        .preco { font-size: 2.2rem; color: var(--gold); font-weight: bold; margin: 15px 0; }
+        .preco { font-size: 2.2rem; color: var(--gold); font-weight: bold; margin: 5px 0; }
         
-        .btn-comprar { 
-            display: block; background: #25d366; color: white; padding: 20px; 
-            text-decoration: none; border-radius: 50px; font-weight: bold; 
-            font-size: 1.2rem; margin-top: 25px; transition: 0.3s;
+        .pagamento-info {
+            background: rgba(212, 175, 55, 0.1); border: 1px dashed var(--gold);
+            padding: 15px; border-radius: 10px; margin: 20px 0; font-size: 0.9rem; text-align: left;
         }
+
+        .btn-action { 
+            display: block; width: 100%; padding: 18px; border-radius: 50px; 
+            font-weight: bold; font-size: 1.1rem; text-decoration: none; margin-bottom: 12px; transition: 0.3s; border: none; cursor: pointer;
+        }
+        .btn-cart { background: transparent; border: 2px solid var(--gold); color: var(--gold); }
+        .btn-wa { background: #25d366; color: white; }
+        
+        .btn-action:hover { transform: scale(1.03); opacity: 0.9; }
         .voltar { display: inline-block; margin-top: 20px; color: #999; text-decoration: none; }
+
+        /* Contador flutuante igual à index */
+        .cart-float { 
+            position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: black; 
+            width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; z-index: 99;
+        }
+        .count { position: absolute; top: -5px; right: -5px; background: red; color: white; width: 22px; height: 22px; border-radius: 50%; font-size: 0.7rem; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid #000; }
     </style>
 </head>
 <body>
@@ -67,42 +82,37 @@
             <div id="p-armazenamento" style="color: var(--gold); font-weight: bold; font-size: 1.2rem;"></div>
             <div class="preco" id="p-preco"></div>
             
-            <a href="#" id="link-whatsapp" target="_blank" class="btn-comprar">Confirmar Pedido no WhatsApp</a>
+            <div class="pagamento-info">
+                <strong>Formas de Pagamento:</strong><br>
+                • Pix ou Dinheiro (Preço à vista)<br>
+                • Cartão de Crédito em até 12x<br>
+                <small style="color: #ff9999;">*No cartão, acréscimo por conta dos juros da maquineta.</small>
+            </div>
+
+            <button onclick="adicionarAoCarrinho()" class="btn-action btn-cart">🛒 Adicionar ao Carrinho</button>
+            <a href="#" id="link-whatsapp" target="_blank" class="btn-action btn-wa">Comprar pelo WhatsApp</a>
+            
             <a href="index.html" class="voltar">← Voltar para a vitrine</a>
         </div>
     </div>
 
+    <a href="carrinho.html" class="cart-float">
+        🛒 <span id="cartCount" class="count">0</span>
+    </a>
+
     <script>
         const produtos = {
-            '16promax': {
-                nome: "iPhone 16 Pro Max", preco: "R$ 5.400", gb: "512GB",
-                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg", "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-1-202409?wid=1000&fmt=p-jpg"]
-            },
-            '15promax': {
-                nome: "iPhone 15 Pro Max", preco: "R$ 4.400", gb: "512GB",
-                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg", "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-bluetitanium?wid=1000&fmt=p-jpg"]
-            },
-            '14promax': {
-                nome: "iPhone 14 Pro Max", preco: "R$ 3.600", gb: "256GB",
-                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209?wid=1000&fmt=p-jpg"]
-            },
-            '13promax': {
-                nome: "iPhone 13 Pro Max", preco: "R$ 3.100", gb: "256GB",
-                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=1000&fmt=p-jpg"]
-            },
-            '14plus': {
-                nome: "iPhone 14 Plus", preco: "R$ 2.500", gb: "128GB",
-                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-starlight?wid=1000&fmt=p-jpg"]
-            },
-            'iphone13': {
-                nome: "iPhone 13", preco: "R$ 2.100", gb: "128GB",
-                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-midnight?wid=1000&fmt=p-jpg"]
-            }
+            '16promax': { id: '16promax', nome: "iPhone 16 Pro Max", preco: "R$ 5.400", gb: "512GB", fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg", "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-1-202409?wid=1000&fmt=p-jpg"] },
+            '15promax': { id: '15promax', nome: "iPhone 15 Pro Max", preco: "R$ 4.400", gb: "512GB", fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg"] },
+            '14promax': { id: '14promax', nome: "iPhone 14 Pro Max", preco: "R$ 3.600", gb: "256GB", fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209?wid=1000&fmt=p-jpg"] },
+            '13promax': { id: '13promax', nome: "iPhone 13 Pro Max", preco: "R$ 3.100", gb: "256GB", fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=1000&fmt=p-jpg"] },
+            '14plus': { id: '14plus', nome: "iPhone 14 Plus", preco: "R$ 2.500", gb: "128GB", fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-starlight?wid=1000&fmt=p-jpg"] },
+            'iphone13': { id: 'iphone13', nome: "iPhone 13", preco: "R$ 2.100", gb: "128GB", fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-midnight?wid=1000&fmt=p-jpg"] }
         };
 
         const params = new URLSearchParams(window.location.search);
-        const id = params.get('id');
-        const p = produtos[id];
+        const pid = params.get('id');
+        const p = produtos[pid];
 
         if(p) {
             document.getElementById('p-nome').innerText = p.nome;
@@ -126,6 +136,20 @@
             const msg = `Olá! Tenho interesse no ${p.nome} (${p.gb}) por ${p.preco}.`;
             document.getElementById('link-whatsapp').href = `https://wa.me/5581985666394?text=${encodeURIComponent(msg)}`;
         }
+
+        function adicionarAoCarrinho() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push(p);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert('Produto adicionado ao carrinho!');
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.getElementById('cartCount').innerText = cart.length;
+        }
+        updateCartCount();
     </script>
 </body>
 </html>
