@@ -3,75 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Carrinho | MathenStore</title>
+    <title>Carrinho | MathenStore</title>
     <style>
         :root { --gold: #d4af37; }
         body { background: #050505; color: white; font-family: sans-serif; padding: 20px; }
         .container { max-width: 500px; margin: 0 auto; }
-        .item-cart { display: flex; justify-content: space-between; background: #111; padding: 15px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #222; }
-        .btn-checkout { display: block; width: 100%; padding: 18px; background: #25d366; color: white; text-align: center; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 20px; }
-        .btn-limpar { background: none; border: 1px solid #ff4444; color: #ff4444; padding: 10px; border-radius: 10px; cursor: pointer; margin-top: 10px; width: 100%; }
-        .metodo-pagamento { margin-top: 20px; background: #111; padding: 15px; border-radius: 10px; }
-        select { width: 100%; padding: 10px; margin-top: 10px; background: #222; color: white; border: 1px solid var(--gold); border-radius: 5px; }
+        .item-cart { background: #111; padding: 15px; border-radius: 10px; margin-bottom: 10px; border: 1px solid #222; display: flex; justify-content: space-between; }
+        .btn-final { display: block; width: 100%; padding: 18px; background: #25d366; color: white; text-align: center; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 20px; }
+        select { width: 100%; padding: 12px; background: #222; color: white; border: 1px solid var(--gold); border-radius: 8px; margin-top: 10px; }
     </style>
 </head>
 <body>
     <div class="container">
         <h2>🛒 Meu Carrinho</h2>
-        <div id="listaCarrinho"></div>
-        <div id="totalCart" style="font-size: 1.5rem; font-weight: bold; margin-top: 20px;"></div>
-
-        <div class="metodo-pagamento">
-            <label>Como deseja pagar?</label>
-            <select id="metodo">
-                <option value="PIX">PIX (Com Desconto)</option>
-                <option value="Cartão de Crédito">Cartão de Crédito (Até 12x)</option>
-                <option value="Débito">Cartão de Débito</option>
-                <option value="Troca">iPhone + Torna (Avaliação)</option>
-            </select>
+        <div id="lista"></div>
+        <h3 id="total" style="text-align:right; color:var(--gold)"></h3>
+        <div style="background:#111; padding:15px; border-radius:10px; border:1px solid #222">
+            <label>Forma de Pagamento:</label>
+            <select id="pag"><option>PIX</option><option>Cartão de Crédito</option><option>iPhone + Volta</option></select>
         </div>
-
-        <a href="#" onclick="finalizarPedido()" class="btn-checkout">Finalizar Pedido via WhatsApp</a>
-        <button onclick="limparCarrinho()" class="btn-limpar">Esvaziar Carrinho</button>
-        <a href="index.html" style="display:block; text-align:center; color: var(--gold); margin-top: 20px; text-decoration: none;">← Continuar Comprando</a>
+        <a href="#" onclick="enviar()" class="btn-final">Finalizar no WhatsApp</a>
+        <button onclick="localStorage.removeItem('cart'); location.reload();" style="background:none; border:none; color:red; width:100%; margin-top:20px; cursor:pointer">Limpar Carrinho</button>
+        <a href="index.html" style="display:block; text-align:center; color:var(--gold); margin-top:20px; text-decoration:none">← Voltar</a>
     </div>
-
     <script>
-        function carregarCarrinho() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const lista = document.getElementById('listaCarrinho');
-            let total = 0;
-            lista.innerHTML = '';
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const lista = document.getElementById('lista');
+        let total = 0;
+        cart.forEach(i => {
+            lista.innerHTML += `<div class="item-cart"><span>${i.nome} (${i.gb})</span><span>R$ ${i.preco}</span></div>`;
+            total += parseFloat(i.preco.replace('.','').replace(',','.'));
+        });
+        document.getElementById('total').innerText = 'Total: R$ ' + total.toLocaleString('pt-BR');
 
-            cart.forEach((item, index) => {
-                lista.innerHTML += `
-                    <div class="item-cart">
-                        <div><b>${item.nome}</b><br><small>${item.gb}</small></div>
-                        <div>R$ ${item.preco}</div>
-                    </div>`;
-                total += parseFloat(item.preco.replace('.', '').replace(',', '.'));
-            });
-            document.getElementById('totalCart').innerText = `Total: R$ ${total.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+        function enviar() {
+            if(cart.length === 0) return;
+            const pag = document.getElementById('pag').value;
+            let msg = '*Novo Pedido MathenStore*%0A%0A';
+            cart.forEach(i => msg += `- ${i.nome} (${i.gb})%0A`);
+            msg += `%0A*Pagamento:* ${pag}`;
+            window.location.href = `https://wa.me/5581985666394?text=${msg}`;
         }
-
-        function finalizarPedido() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            if(cart.length === 0) return alert('Carrinho vazio!');
-            
-            const metodo = document.getElementById('metodo').value;
-            let texto = `*Novo Pedido - MathenStore*%0A%0A`;
-            cart.forEach(i => texto += `- ${i.nome} (${i.gb})%0A`);
-            texto += `%0A*Forma de Pagamento:* ${metodo}`;
-            
-            window.location.href = `https://wa.me/5581985666394?text=${texto}`;
-        }
-
-        function limparCarrinho() {
-            localStorage.removeItem('cart');
-            location.reload();
-        }
-
-        carregarCarrinho();
     </script>
 </body>
 </html>
