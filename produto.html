@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhes do Produto | MTH STORE</title>
+    <title>MTH STORE | Detalhes</title>
     <style>
         :root { --gold: #d4af37; }
 
-        /* FUNDO FIXO IGUAL À INDEX */
         html, body {
             margin: 0; padding: 0; min-height: 100vh;
             background-image: url('https://raw.githubusercontent.com/vlogsmatheus7-code/mathenstore/main/fundo-preto-premium.jpg') !important;
@@ -22,7 +21,6 @@
 
         .container { max-width: 600px; margin: 20px auto; padding: 20px; text-align: center; }
 
-        /* GALERIA DE FOTOS */
         .main-img-container { 
             background: rgba(255,255,255,0.05); border-radius: 20px; 
             padding: 20px; border: 1px solid rgba(212, 175, 55, 0.3);
@@ -30,14 +28,13 @@
         }
         #p-img-principal { width: 100%; max-height: 400px; object-fit: contain; }
 
-        .thumbnails { display: flex; justify-content: center; gap: 10px; margin-top: 15px; }
+        .thumbnails { display: flex; justify-content: center; gap: 10px; margin-top: 15px; flex-wrap: wrap; }
         .thumb { 
             width: 60px; height: 60px; border: 1px solid rgba(212, 175, 55, 0.3); 
             border-radius: 8px; cursor: pointer; object-fit: cover; opacity: 0.6; transition: 0.3s;
         }
         .thumb:hover, .thumb.active { opacity: 1; border-color: var(--gold); }
 
-        /* INFO DO PRODUTO */
         .info-card { 
             background: rgba(0,0,0,0.6); padding: 25px; border-radius: 20px; 
             border: 1px solid rgba(212, 175, 55, 0.1); margin-top: 20px;
@@ -50,8 +47,7 @@
             text-decoration: none; border-radius: 50px; font-weight: bold; 
             font-size: 1.2rem; margin-top: 25px; transition: 0.3s;
         }
-        .btn-comprar:hover { transform: scale(1.05); background: #1ebd5b; }
-        .voltar { display: inline-block; margin-top: 20px; color: #999; text-decoration: none; font-size: 0.9rem; }
+        .voltar { display: inline-block; margin-top: 20px; color: #999; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -63,15 +59,13 @@
     <div class="container">
         <div class="main-img-container">
             <img id="p-img-principal" src="" alt="Produto">
-            <div class="thumbnails" id="galeria-fotos">
-                </div>
+            <div class="thumbnails" id="galeria-fotos"></div>
         </div>
 
         <div class="info-card">
             <h1 id="p-nome">Carregando...</h1>
-            <div id="p-armazenamento" style="color: var(--gold); font-weight: bold;"></div>
+            <div id="p-armazenamento" style="color: var(--gold); font-weight: bold; font-size: 1.2rem;"></div>
             <div class="preco" id="p-preco"></div>
-            <p id="p-desc" style="color: #ccc; line-height: 1.6;">Garantia Apple de 1 ano e nota fiscal inclusa.</p>
             
             <a href="#" id="link-whatsapp" target="_blank" class="btn-comprar">Confirmar Pedido no WhatsApp</a>
             <a href="index.html" class="voltar">← Voltar para a vitrine</a>
@@ -79,27 +73,31 @@
     </div>
 
     <script>
-        // BANCO DE DADOS DOS PRODUTOS
         const produtos = {
             '16promax': {
-                nome: "iPhone 16 Pro Max",
-                preco: "R$ 5.400",
-                gb: "512GB",
-                fotos: [
-                    "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg",
-                    "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-1-202409?wid=1000&fmt=p-jpg"
-                ]
+                nome: "iPhone 16 Pro Max", preco: "R$ 5.400", gb: "512GB",
+                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg", "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-1-202409?wid=1000&fmt=p-jpg"]
             },
             '15promax': {
-                nome: "iPhone 15 Pro Max",
-                preco: "R$ 4.400",
-                gb: "512GB",
-                fotos: [
-                    "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg",
-                    "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-bluetitanium?wid=1000&fmt=p-jpg"
-                ]
+                nome: "iPhone 15 Pro Max", preco: "R$ 4.400", gb: "512GB",
+                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg", "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-bluetitanium?wid=1000&fmt=p-jpg"]
+            },
+            '14promax': {
+                nome: "iPhone 14 Pro Max", preco: "R$ 3.600", gb: "256GB",
+                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209?wid=1000&fmt=p-jpg"]
+            },
+            '13promax': {
+                nome: "iPhone 13 Pro Max", preco: "R$ 3.100", gb: "256GB",
+                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=1000&fmt=p-jpg"]
+            },
+            '14plus': {
+                nome: "iPhone 14 Plus", preco: "R$ 2.500", gb: "128GB",
+                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-starlight?wid=1000&fmt=p-jpg"]
+            },
+            'iphone13': {
+                nome: "iPhone 13", preco: "R$ 2.100", gb: "128GB",
+                fotos: ["https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-midnight?wid=1000&fmt=p-jpg"]
             }
-            // Adicione os outros IDs (14promax, 13promax, etc) seguindo a mesma lógica
         };
 
         const params = new URLSearchParams(window.location.search);
@@ -112,7 +110,6 @@
             document.getElementById('p-armazenamento').innerText = p.gb;
             document.getElementById('p-img-principal').src = p.fotos[0];
             
-            // Gerar as miniaturas
             const galeria = document.getElementById('galeria-fotos');
             p.fotos.forEach((foto, index) => {
                 const img = document.createElement('img');
@@ -126,8 +123,7 @@
                 galeria.appendChild(img);
             });
 
-            // Link do WhatsApp dinâmico
-            const msg = `Olá! Tenho interesse no ${p.nome} de ${p.gb} por ${p.preco}. Está disponível?`;
+            const msg = `Olá! Tenho interesse no ${p.nome} (${p.gb}) por ${p.preco}.`;
             document.getElementById('link-whatsapp').href = `https://wa.me/5581985666394?text=${encodeURIComponent(msg)}`;
         }
     </script>
