@@ -30,15 +30,8 @@
             padding: 0 20px;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        .logo span {
-            color: #0071e3;
-        }
+        .logo { font-size: 1.5rem; font-weight: bold; margin: 0; }
+        .logo span { color: #0071e3; }
 
         .btn-header {
             background-color: #0071e3;
@@ -50,71 +43,51 @@
             font-size: 0.9rem;
         }
 
-        .add-phone {
-            padding: 60px 20px;
-            text-align: center;
+        /* Grade de Produtos */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
 
         .produto-card {
             background: #fff;
             border-radius: 22px;
             box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            max-width: 340px;
-            margin: 0 auto;
             overflow: hidden;
             transition: transform 0.3s ease;
+            text-align: center;
         }
 
-        .produto-card:hover {
-            transform: translateY(-10px);
-        }
+        .produto-card:hover { transform: translateY(-10px); }
 
         .produto-imagem img {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 250px;
+            object-fit: cover;
             background-color: #eee;
-            min-height: 250px;
         }
 
-        .produto-info {
-            padding: 30px;
-        }
-
-        .produto-info h3 {
-            margin: 0;
-            font-size: 1.6rem;
-            color: #1d1d1f;
-        }
-
-        .capacidade {
-            color: #86868b;
-            margin: 8px 0;
-            font-size: 1.1rem;
-        }
-
-        .preco {
-            font-size: 1.9rem;
-            font-weight: bold;
-            color: #1d1d1f;
-            margin: 25px 0;
-        }
+        .produto-info { padding: 25px; }
+        .produto-info h3 { margin: 0; font-size: 1.4rem; color: #1d1d1f; }
+        .capacidade { color: #86868b; margin: 8px 0; }
+        .preco { font-size: 1.7rem; font-weight: bold; color: #1d1d1f; margin: 20px 0; }
 
         .botao-whatsapp {
             display: block;
             background-color: #25d366;
             color: white;
             text-decoration: none;
-            padding: 16px;
-            border-radius: 14px;
+            padding: 14px;
+            border-radius: 12px;
             font-weight: bold;
-            font-size: 1.1rem;
             transition: background 0.3s;
         }
 
-        .botao-whatsapp:hover {
-            background-color: #128c7e;
-        }
+        .botao-whatsapp:hover { background-color: #128c7e; }
     </style>
 </head>
 <body>
@@ -126,21 +99,45 @@
         </div>
     </header>
 
-    <section class="add-phone">
+    <div class="container">
+        
         <div class="produto-card">
             <div class="produto-imagem">
                 <img src="iphone14plus.jpg" alt="iPhone 14 Plus">
             </div>
             <div class="produto-info">
                 <h3>iPhone 14 Plus</h3>
-                <p class="capacidade">256GB • Novo Lacrado</p>
+                <p class="capacidade">256GB • Novo</p>
                 <div class="preco">R$ 2.600,00</div>
-                <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+14+Plus" target="_blank" class="botao-whatsapp">
-                    Comprar via WhatsApp
-                </a>
+                <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone+14+Plus" class="botao-whatsapp">Comprar</a>
             </div>
         </div>
-    </section>
+
+        <div class="produto-card">
+            <div class="produto-imagem">
+                <img src="iphone13.jpg" alt="iPhone 13">
+            </div>
+            <div class="produto-info">
+                <h3>iPhone 13</h3>
+                <p class="capacidade">128GB • Lacrado</p>
+                <div class="preco">R$ 2.100,00</div>
+                <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone+13" class="botao-whatsapp">Comprar</a>
+            </div>
+        </div>
+
+        <div class="produto-card">
+            <div class="produto-imagem">
+                <img src="iphone15pro.jpg" alt="iPhone 15 Pro">
+            </div>
+            <div class="produto-info">
+                <h3>iPhone 15 Pro</h3>
+                <p class="capacidade">128GB • Titânio</p>
+                <div class="preco">R$ 5.800,00</div>
+                <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone+15+Pro" class="botao-whatsapp">Comprar</a>
+            </div>
+        </div>
+
+    </div>
 
 </body>
 </html>
