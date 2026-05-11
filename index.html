@@ -52,7 +52,6 @@
             padding: 0 20px;
         }
 
-        /* Estilo da Linha de Produto (Design Premium Preto e Dourado) */
         .produto-row {
             display: flex;
             align-items: center;
@@ -72,24 +71,24 @@
             transform: translateY(-3px) scale(1.01);
         }
 
-        /* AJUSTE DAS IMAGENS: Agora maiores e centralizadas */
+        /* AJUSTE FINAL DAS IMAGENS: Agora todas ficam grandes */
         .img-box {
-            width: 100px; /* Aumentado de 70px para 100px */
-            height: 100px; /* Aumentado de 70px para 100px */
+            width: 110px; 
+            height: 110px;
             margin-right: 25px;
             background: rgba(255,255,255,0.03);
             border-radius: 12px;
-            padding: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(212, 175, 55, 0.2);
+            border: 1px solid rgba(212, 175, 55, 0.1);
+            overflow: hidden;
         }
 
         .img-box img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain; /* Garante que a foto não corte */
+            width: 130%; /* Aumenta o zoom da imagem para preencher melhor */
+            height: 130%;
+            object-fit: contain;
         }
 
         .info-box {
@@ -137,7 +136,6 @@
             color: white;
         }
 
-        /* Footer Profissional */
         .footer-info {
             text-align: center;
             margin-top: 80px;
@@ -170,17 +168,12 @@
         }
 
         @media (max-width: 600px) {
-            header { padding: 30px 10px; }
-            .logo-main { font-size: 1.6rem; }
-            .sub-header { font-size: 1.2rem; }
-            .container { margin: 30px auto; padding: 0 10px; }
-            
-            .produto-row { padding: 15px; flex-wrap: wrap; }
-            .img-box { width: 60px; height: 60px; margin-right: 15px; padding: 5px; }
+            .produto-row { padding: 15px; }
+            .img-box { width: 80px; height: 80px; margin-right: 15px; }
             .info-box h3 { font-size: 1rem; }
             .valor { font-size: 1.3rem; }
-            .price-box { min-width: 100%; text-align: left; padding-left: 75px; margin-top: -15px; border-top: 1px solid rgba(212,175,55,0.1); padding-top: 10px; }
-            .social-btn { display: block; margin: 10px auto; width: 80%; }
+            .price-box { min-width: 100%; text-align: left; padding-left: 95px; margin-top: -15px; border-top: 1px solid rgba(212,175,55,0.1); padding-top: 10px; }
+            .social-btn { display: block; margin: 10px auto; width: 85%; }
         }
     </style>
 </head>
@@ -193,74 +186,74 @@
 
 <div class="container">
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+16+Pro+Max+de+R$+5.400" target="_blank" class="produto-row">
-        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1722543372270" alt="16 Pro Max"></div>
+    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+16+Pro+Max" target="_blank" class="produto-row">
+        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg" alt="16 Pro Max"></div>
         <div class="info-box">
             <h3>iPhone 16 Pro Max</h3>
             <span class="tag-gb">512GB</span>
         </div>
         <div class="price-box">
-            <span class="price-label">Valor à Vista (PIX)</span>
+            <span class="price-label">Valor de Venda</span>
             <span class="valor">R$ 5.400,00</span>
         </div>
     </a>
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+15+Pro+Max+de+R$+4.400" target="_blank" class="produto-row">
-        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1692845702708" alt="15 Pro Max"></div>
+    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+15+Pro+Max" target="_blank" class="produto-row">
+        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg" alt="15 Pro Max"></div>
         <div class="info-box">
             <h3>iPhone 15 Pro Max</h3>
             <span class="tag-gb">512GB</span>
         </div>
         <div class="price-box">
-            <span class="price-label">Valor à Vista (PIX)</span>
+            <span class="price-label">Valor de Venda</span>
             <span class="valor">R$ 4.400,00</span>
         </div>
     </a>
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+14+Pro+Max+de+R$+3.600" target="_blank" class="produto-row">
-        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1660754213909" alt="14 Pro Max"></div>
+    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+14+Pro+Max" target="_blank" class="produto-row">
+        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209?wid=1000&fmt=p-jpg" alt="14 Pro Max"></div>
         <div class="info-box">
             <h3>iPhone 14 Pro Max</h3>
             <span class="tag-gb">256GB</span>
         </div>
         <div class="price-box">
-            <span class="price-label">Valor à Vista (PIX)</span>
+            <span class="price-label">Valor de Venda</span>
             <span class="valor">R$ 3.600,00</span>
         </div>
     </a>
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+13+Pro+Max+de+R$+3.100" target="_blank" class="produto-row">
-        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=470&hei=556&fmt=png-alpha&.v=1645552346280" alt="13 Pro Max"></div>
+    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+13+Pro+Max" target="_blank" class="produto-row">
+        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=1000&fmt=p-jpg" alt="13 Pro Max"></div>
         <div class="info-box">
             <h3>iPhone 13 Pro Max</h3>
             <span class="tag-gb">256GB</span>
         </div>
         <div class="price-box">
-            <span class="price-label">Valor à Vista (PIX)</span>
+            <span class="price-label">Valor de Venda</span>
             <span class="valor">R$ 3.100,00</span>
         </div>
     </a>
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+14+Plus+de+R$+2.500" target="_blank" class="produto-row">
-        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-starlight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1660744938743" alt="14 Plus"></div>
+    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+14+Plus" target="_blank" class="produto-row">
+        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-starlight?wid=1000&fmt=p-jpg" alt="14 Plus"></div>
         <div class="info-box">
             <h3>iPhone 14 Plus</h3>
             <span class="tag-gb">126GB</span>
         </div>
         <div class="price-box">
-            <span class="price-label">Valor à Vista (PIX)</span>
+            <span class="price-label">Valor de Venda</span>
             <span class="valor">R$ 2.500,00</span>
         </div>
     </a>
 
-    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+13+de+R$+2.100" target="_blank" class="produto-row">
-        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-midnight?wid=5120&hei=2880&fmt=p-jpg&qlt=80&.v=1656720518200" alt="iPhone 13"></div>
+    <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+13" target="_blank" class="produto-row">
+        <div class="img-box"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-midnight?wid=1000&fmt=p-jpg" alt="iPhone 13"></div>
         <div class="info-box">
             <h3>iPhone 13</h3>
             <span class="tag-gb">128GB</span>
         </div>
         <div class="price-box">
-            <span class="price-label">Valor à Vista (PIX)</span>
+            <span class="price-label">Valor de Venda</span>
             <span class="valor">R$ 2.100,00</span>
         </div>
     </a>
@@ -268,8 +261,8 @@
 </div>
 
 <div class="footer-info">
-    <a href="https://wa.me/5581985666394" target="_blank" class="social-btn btn-wpp">Falar no WhatsApp</a>
-    <a href="https://www.instagram.com/mathenstore/" target="_blank" class="btn-ig">@mathenstore</a>
+    <a href="https://wa.me/5581985666394" target="_blank" class="social-btn btn-wpp">Chamar no WhatsApp</a>
+    <a href="https://www.instagram.com/mathenstore/" target="_blank" class="btn-ig">Seguir no Instagram</a>
     <p class="location">Recife, Pernambuco - Mathen Store © 2026</p>
 </div>
 
