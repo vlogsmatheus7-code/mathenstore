@@ -7,52 +7,32 @@
     <style>
         :root { --gold: #d4af37; }
 
-        /* FUNDO FIXO QUE COBRE TUDO (LINK DIRETO DO SEU GITHUB) */
         html, body {
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            width: 100%;
+            margin: 0; padding: 0; min-height: 100vh; width: 100%;
             background-image: url('https://raw.githubusercontent.com/vlogsmatheus7-code/mathenstore/main/fundo-preto-premium.jpg') !important;
-            background-size: cover !important;
-            background-position: center !important;
-            background-attachment: fixed !important;
-            background-color: #000;
-            color: white;
-            font-family: 'Segoe UI', sans-serif;
+            background-size: cover !important; background-position: center !important;
+            background-attachment: fixed !important; background-color: #000;
+            color: white; font-family: 'Segoe UI', sans-serif;
         }
 
-        /* Camada escura para destacar os produtos */
         body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.5); 
-            z-index: -1;
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5); z-index: -1;
         }
 
         header { 
-            background: rgba(0, 0, 0, 0.9); 
-            padding: 40px 0; 
-            text-align: center;
-            border-bottom: 2px solid var(--gold); 
-            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.9); padding: 40px 0; text-align: center;
+            border-bottom: 2px solid var(--gold); backdrop-filter: blur(10px);
         }
 
-        .logo-img {
-            max-width: 200px;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
-        }
+        .logo-img { max-width: 200px; filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6)); }
 
         .container { max-width: 850px; margin: 30px auto; padding: 0 15px 100px 15px; }
 
-        /* LISTA COMPLETA DE PRODUTOS */
         .produto-link { text-decoration: none; color: white; display: block; margin-bottom: 18px; }
         .produto-row { 
-            display: flex; align-items: center; 
-            background: rgba(25, 25, 25, 0.7) !important; 
-            border: 1px solid rgba(212, 175, 55, 0.2); 
-            border-radius: 20px; padding: 22px; 
+            display: flex; align-items: center; background: rgba(25, 25, 25, 0.7) !important; 
+            border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 20px; padding: 22px; 
             transition: 0.4s; backdrop-filter: blur(15px);
         }
         .produto-row:hover { border-color: var(--gold); transform: scale(1.02); }
@@ -67,18 +47,12 @@
         .price-box { min-width: 130px; text-align: right; padding-left: 15px; }
         .valor { font-size: 1.4rem; font-weight: bold; }
 
-        /* CARRINHO FLUTUANTE */
         .cart-float { 
-            position: fixed; bottom: 30px; right: 30px; 
-            background: var(--gold); color: black; width: 65px; height: 65px; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            position: fixed; bottom: 30px; right: 30px; background: var(--gold); color: black; 
+            width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; 
             font-size: 1.6rem; text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,0.6); z-index: 999; 
         }
-        .cart-count { 
-            position: absolute; top: -5px; right: -5px; background: #ff0000; color: white; 
-            font-size: 0.75rem; width: 24px; height: 24px; border-radius: 50%; 
-            display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid black;
-        }
+        .cart-count { position: absolute; top: -5px; right: -5px; background: #ff0000; color: white; font-size: 0.75rem; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 2px solid black; }
 
         .social-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 50px; }
         .social-btn { display: flex; align-items: center; justify-content: center; width: 100%; max-width: 400px; padding: 20px; border-radius: 50px; text-decoration: none; font-weight: bold; transition: 0.3s; }
@@ -154,6 +128,5 @@
     }
     updateCartCount();
 </script>
-
 </body>
 </html>
