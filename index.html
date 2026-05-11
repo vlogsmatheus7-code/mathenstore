@@ -3,155 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MathenStore - iPhones</title>
+    <title>MathenStore</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f7;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
-
-        .main-header {
-            background-color: #1d1d1f;
-            padding: 15px 0;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin: 0;
-        }
-
-        .logo span {
-            color: #0071e3;
-        }
-
-        nav a {
-            color: #f5f5f7;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #0071e3;
-        }
-
-        .btn-contato {
-            background-color: #0071e3;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-weight: 500;
-            transition: opacity 0.3s;
-        }
-
-        .add-phone {
-            padding: 60px 20px;
-            text-align: center;
-        }
-
-        .produto-card {
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-            max-width: 320px;
-            margin: 0 auto;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-        }
-
-        .produto-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .produto-imagem img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .produto-info {
-            padding: 25px;
-        }
-
-        .produto-info h3 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: #1d1d1f;
-        }
-
-        .capacidade {
-            color: #86868b;
-            margin: 5px 0;
-            font-size: 1rem;
-        }
-
-        .preco {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #1d1d1f;
-            margin: 20px 0;
-        }
-
-        .botao-whatsapp {
-            display: block;
-            background-color: #25d366;
-            color: white;
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 12px;
-            font-weight: bold;
-            font-size: 1rem;
-            transition: background 0.3s;
-        }
-
-        .botao-whatsapp:hover {
-            background-color: #128c7e;
-        }
+        body { margin: 0; padding: 0; background-color: #f5f5f7; font-family: sans-serif; }
+        header { background: #1d1d1f; color: white; padding: 15px 20px; text-align: center; position: sticky; top: 0; }
+        .logo span { color: #0071e3; }
+        .container { padding: 40px 20px; display: flex; justify-content: center; }
+        .card { background: white; border-radius: 18px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); width: 100%; max-width: 320px; overflow: hidden; text-align: center; }
+        .info { padding: 20px; }
+        .preco { font-size: 24px; font-weight: bold; color: #1d1d1f; margin: 15px 0; }
+        .btn { display: block; background: #25d366; color: white; text-decoration: none; padding: 12px; border-radius: 10px; font-weight: bold; }
+        img { width: 100%; height: auto; display: block; background: #eee; min-height: 200px; }
     </style>
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="header-container">
-            <h1 class="logo">Mathen<span>Store</span></h1>
-            <nav>
-                <a href="#">Início</a>
-                <a href="https://wa.me/5581985666394" class="btn-contato">WhatsApp</a>
-            </nav>
-        </div>
-    </header>
+<header>
+    <h1 style="margin:0; font-size: 22px;">Mathen<span>Store</span></h1>
+</header>
 
-    <section class="add-phone">
-        <div class="produto-card">
-            <div class="produto-imagem">
-                <img src="iphone14plus.jpg" alt="iPhone 14 Plus">
-            </div>
-            <div class="produto-info">
-                <h3>iPhone 14 Plus</h3>
-                <p class="capacidade">256GB • Novo</p>
-                <p class="preco">R$ 2.600,00</p>
-                <a href="https://wa.me/5581985666394?text=Olá!+Tenho+interesse+no+iPhone+14+Plus+de+R$+2.600" target="_blank" class="botao-whatsapp">
-                    Comprar via WhatsApp
-                </a>
-            </div>
+<div class="container">
+    <div class="card">
+        <img src="iphone14plus.jpg" alt="iPhone 14 Plus">
+        <div class="info">
+            <h3 style="margin:0;">iPhone 14 Plus</h3>
+            <p style="color: #666;">256GB • Novo</p>
+            <div class="preco">R$ 2.600,00</div>
+            <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone" class="btn">Comprar no WhatsApp</a>
         </div>
-    </section>
+    </div>
+</div>
 
 </body>
 </html>
