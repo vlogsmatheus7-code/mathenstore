@@ -16,13 +16,29 @@
             background: rgba(0, 0, 0, 0.85); z-index: -1; 
         }
         
-        header { padding: 40px 20px; text-align: center; }
-        .logo-main { font-size: 2.2rem; font-weight: bold; letter-spacing: 4px; text-transform: uppercase; margin: 0; }
-        .logo-main span { color: var(--gold); }
+        /* HEADER COM LOGO NOVO */
+        header { 
+            background-color: #000; 
+            padding: 15px 0; 
+            border-bottom: 2px solid var(--gold); 
+            text-align: center;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70px;
+        }
+        .logo-img {
+            height: 100%;
+            max-height: 60px;
+            width: auto;
+            display: block;
+        }
 
         .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
 
-        /* PRODUTOS */
+        /* LISTA DE PRODUTOS */
         .produto-link { text-decoration: none; color: white; display: block; margin-bottom: 12px; }
         .produto-row { 
             display: flex; align-items: center; background: rgba(15, 15, 15, 0.7); 
@@ -56,7 +72,6 @@
         .feedback-text { font-style: italic; font-size: 0.95rem; color: #ccc; line-height: 1.6; margin: 0; }
         .feedback-author { display: block; margin-top: 10px; font-weight: bold; color: var(--gold); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
 
-        /* BOTÕES DE CONTATO */
         .social-container { 
             display: flex; flex-direction: column; align-items: center; 
             gap: 12px; margin: 30px auto 100px; max-width: 350px; 
@@ -70,7 +85,6 @@
         .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); color: white; box-shadow: 0 4px 15px rgba(188, 24, 136, 0.2); }
         .social-btn:hover { transform: scale(1.03); filter: brightness(1.1); }
 
-        /* CARRINHO FLUTUANTE */
         .cart-float { 
             position: fixed; bottom: 30px; right: 30px; 
             background: var(--gold); color: black; width: 60px; height: 60px; 
@@ -87,7 +101,9 @@
 <body>
 
 <header>
-    <h1 class="logo-main">MTH <span>STORE</span></h1>
+    <div class="logo-container">
+        <img src="logo-dourado.png" alt="MTH STORE" class="logo-img">
+    </div>
 </header>
 
 <div class="container">
