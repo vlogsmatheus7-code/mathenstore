@@ -8,10 +8,19 @@
         :root { --gold: #d4af37; --dark-bg: #050505; --card-bg: #111; }
         body { margin: 0; padding: 0; background-color: var(--dark-bg); color: white; font-family: 'Segoe UI', sans-serif; padding-bottom: 50px; }
         
-        header { padding: 20px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); display: flex; align-items: center; background: #000; }
-        .btn-voltar { text-decoration: none; color: var(--gold); font-weight: bold; font-size: 1.5rem; margin-right: 20px; }
-        .logo-sm { font-size: 1.2rem; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; }
-        .logo-sm span { color: var(--gold); }
+        header { 
+            background-color: #000; 
+            padding: 15px 0; 
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3); 
+            text-align: center;
+            position: relative;
+        }
+        .btn-voltar { 
+            position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
+            text-decoration: none; color: var(--gold); font-weight: bold; font-size: 1.5rem; 
+        }
+        .logo-container { height: 50px; display: flex; justify-content: center; align-items: center; }
+        .logo-img { height: 100%; max-height: 40px; }
 
         .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
 
@@ -41,7 +50,9 @@
 
 <header>
     <a href="index.html" class="btn-voltar">←</a>
-    <div class="logo-sm">MTH <span>STORE</span></div>
+    <div class="logo-container">
+        <img src="logo-dourado.png" alt="MTH STORE" class="logo-img">
+    </div>
 </header>
 
 <div class="container">
