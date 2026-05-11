@@ -7,19 +7,18 @@
     <style>
         :root { --gold: #d4af37; }
 
-        /* TÉCNICA À PROVA DE ERROS: FUNDO FIXO EM CAMADA SEPARADA */
-        .fundo-fixo {
+        /* ESTE É O TRUQUE: O fundo fica fixo atrás de tudo */
+        .bg-fixo {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            /* Usando uma textura escura e elegante que não fica colorida */
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+            width: 100%;
+            height: 100%;
+            /* Imagem de mármore escuro neutro */
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
                               url('https://www.transparenttextures.com/patterns/dark-matter.png');
-            background-color: #0a0a0a;
-            background-size: auto;
-            z-index: -999; /* Fica atrás de absolutamente tudo */
+            background-color: #080808;
+            z-index: -10; /* Fica atrás de tudo */
         }
 
         body {
@@ -27,7 +26,7 @@
             padding: 0;
             color: white;
             font-family: 'Segoe UI', sans-serif;
-            overflow-x: hidden;
+            background-color: #000; /* Backup */
         }
 
         header { 
@@ -36,62 +35,56 @@
             text-align: center;
             border-bottom: 2px solid var(--gold); 
             backdrop-filter: blur(10px);
-            position: relative;
+            margin-bottom: 20px;
         }
 
         .logo-img {
-            max-width: 200px;
-            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
+            max-width: 180px;
+            filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.5));
         }
 
         .container { 
-            max-width: 850px; 
-            margin: 30px auto; 
-            padding: 0 15px 100px 15px;
-            position: relative;
+            max-width: 800px; 
+            margin: 0 auto; 
+            padding: 20px 15px 100px 15px; 
         }
 
-        /* CARDS COM TRANSPARÊNCIA PARA APARECER O FUNDO */
-        .produto-link { text-decoration: none; color: white; display: block; margin-bottom: 18px; }
+        /* CARDS DOS IPHONES */
+        .produto-link { text-decoration: none; color: white; display: block; margin-bottom: 15px; }
         .produto-row { 
             display: flex; 
             align-items: center; 
-            background: rgba(30, 30, 30, 0.6) !important; 
+            background: rgba(25, 25, 25, 0.8) !important; 
             border: 1px solid rgba(212, 175, 55, 0.2); 
-            border-radius: 20px; 
-            padding: 22px; 
-            transition: 0.4s;
+            border-radius: 18px; 
+            padding: 20px; 
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
-        .produto-row:hover { 
-            border-color: var(--gold); 
-            transform: translateY(-5px);
-            background: rgba(50, 50, 50, 0.8) !important;
-        }
 
         .img-box { 
-            width: 95px; height: 95px; margin-right: 20px; 
-            background: #000; border-radius: 15px; 
+            width: 85px; height: 85px; margin-right: 15px; 
+            background: #000; border-radius: 12px; 
             display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; 
         }
         .img-box img { width: 110%; object-fit: contain; }
 
-        .info-box { flex-grow: 1; border-right: 1px solid rgba(212, 175, 55, 0.1); padding-right: 15px; }
-        .info-box h3 { margin: 0; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .info-box { flex-grow: 1; }
+        .info-box h3 { margin: 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
         .tag-gb { 
             display: inline-block; border: 1px solid var(--gold); color: var(--gold); 
-            font-size: 0.7rem; padding: 4px 12px; border-radius: 6px; margin-top: 10px; font-weight: bold;
+            font-size: 0.65rem; padding: 3px 10px; border-radius: 5px; margin-top: 8px; font-weight: bold;
         }
 
-        .price-box { min-width: 130px; text-align: right; padding-left: 15px; }
-        .valor { font-size: 1.4rem; font-weight: bold; color: #fff; }
+        .price-box { text-align: right; min-width: 110px; }
+        .valor { font-size: 1.3rem; font-weight: bold; color: #fff; }
 
-        .social-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 50px; }
+        /* BOTÕES */
+        .social-container { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-top: 40px; }
         .social-btn { 
             display: flex; align-items: center; justify-content: center; 
-            width: 100%; max-width: 400px; padding: 20px; border-radius: 50px; 
-            text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: 0.3s; 
+            width: 100%; max-width: 350px; padding: 18px; border-radius: 50px; 
+            text-decoration: none; font-weight: bold; font-size: 1rem;
         }
         .btn-wa { background-color: #25d366; color: white; }
         .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); color: white; }
@@ -99,11 +92,11 @@
 </head>
 <body>
 
-    <div class="fundo-fixo"></div>
+    <div class="bg-fixo"></div>
 
     <header>
         <img src="logo-dourado.png" alt="MTH STORE" class="logo-img">
-        <div style="color: var(--gold); font-size: 0.65rem; letter-spacing: 5px; margin-top: 15px; text-transform: uppercase;"> Apple Premium Specialist</div>
+        <div style="color: var(--gold); font-size: 0.6rem; letter-spacing: 4px; margin-top: 12px; text-transform: uppercase;"> Apple Premium Specialist</div>
     </header>
 
     <div class="container">
@@ -157,9 +150,8 @@
 
         <div class="social-container">
             <a href="https://wa.me/5581985666394" target="_blank" class="social-btn btn-wa">Chamar no WhatsApp</a>
-            <a href="https://www.instagram.com/mathenstore/" target="_blank" class="social-btn btn-ig">Acompanhar Instagram</a>
+            <a href="https://www.instagram.com/mathenstore/" target="_blank" class="social-btn btn-ig">Instagram Oficial</a>
         </div>
     </div>
-
 </body>
 </html>
