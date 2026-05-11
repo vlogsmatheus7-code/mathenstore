@@ -8,48 +8,60 @@
         :root { --gold: #d4af37; }
         body { 
             margin: 0; padding: 0; 
-            background-image: url('fundo.jpg'); background-attachment: fixed; background-size: cover; background-position: center; 
+            background-color: #050505;
             color: white; font-family: 'Segoe UI', sans-serif; 
         }
-        body::before { 
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-            background: rgba(0, 0, 0, 0.85); z-index: -1; 
-        }
         
-        /* HEADER COM LOGO NOVO */
+        /* HEADER - DESIGN MTH STORE VIA CÓDIGO */
         header { 
             background-color: #000; 
-            padding: 15px 0; 
+            padding: 25px 0; 
             border-bottom: 2px solid var(--gold); 
             text-align: center;
         }
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 80px;
+        .brand-box {
+            display: inline-block;
+            border: 1px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 4px;
         }
-        .logo-img {
-            height: 100%;
-            max-height: 70px;
-            width: auto;
-            display: block;
+        .brand-name {
+            margin: 0;
+            font-family: 'Times New Roman', serif;
+            letter-spacing: 6px;
+            color: var(--gold);
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        .brand-name span {
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            font-size: 1rem;
+            letter-spacing: 3px;
+            font-weight: 100;
+        }
+        .tagline {
+            margin: 8px 0 0 0;
+            font-size: 0.6rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
         }
 
         .container { max-width: 800px; margin: 20px auto; padding: 0 15px; }
 
-        /* LISTA DE PRODUTOS */
         .produto-link { text-decoration: none; color: white; display: block; margin-bottom: 12px; }
         .produto-row { 
-            display: flex; align-items: center; background: rgba(15, 15, 15, 0.7); 
+            display: flex; align-items: center; background: rgba(20, 20, 20, 0.9); 
             border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 15px; 
-            padding: 15px; transition: 0.3s; backdrop-filter: blur(10px); 
+            padding: 15px; transition: 0.3s; 
         }
         .produto-row:hover { border-color: var(--gold); transform: scale(1.02); }
 
         .img-box { 
             width: 70px; height: 70px; margin-right: 15px; 
-            background: rgba(255,255,255,0.05); border-radius: 10px; 
+            background: #000; border-radius: 10px; 
             display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; 
         }
         .img-box img { width: 130%; object-fit: contain; }
@@ -62,11 +74,10 @@
         .price-box { min-width: 110px; text-align: right; padding-left: 10px; }
         .valor { font-size: 1.2rem; font-weight: bold; color: white; }
 
-        /* FEEDBACK */
         .feedback-section { 
             margin: 50px auto 30px; text-align: center; 
-            background: rgba(212, 175, 55, 0.03); border-radius: 20px; 
-            padding: 25px; border: 1px dashed rgba(212, 175, 55, 0.2); 
+            background: rgba(212, 175, 55, 0.05); border-radius: 20px; 
+            padding: 25px; border: 1px dashed rgba(212, 175, 55, 0.3); 
         }
         .stars { color: var(--gold); font-size: 1.2rem; margin-bottom: 10px; }
         .feedback-text { font-style: italic; font-size: 0.95rem; color: #ccc; line-height: 1.6; margin: 0; }
@@ -81,9 +92,8 @@
             width: 100%; padding: 18px 0; border-radius: 35px; 
             text-decoration: none; font-weight: bold; font-size: 1rem; transition: 0.3s; 
         }
-        .btn-wa { background-color: #25d366; color: white; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); }
-        .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); color: white; box-shadow: 0 4px 15px rgba(188, 24, 136, 0.2); }
-        .social-btn:hover { transform: scale(1.03); filter: brightness(1.1); }
+        .btn-wa { background-color: #25d366; color: white; }
+        .btn-ig { background: linear-gradient(45deg, #f09433, #bc1888); color: white; }
 
         .cart-float { 
             position: fixed; bottom: 30px; right: 30px; 
@@ -101,9 +111,10 @@
 <body>
 
 <header>
-    <div class="logo-container">
-        <img src="logo-dourado.png?v=1" alt="MTH STORE" class="logo-img">
+    <div class="brand-box">
+        <h1 class="brand-name">MTH <span>STORE</span></h1>
     </div>
+    <p class="tagline">Premium iPhones</p>
 </header>
 
 <div class="container">
@@ -162,8 +173,8 @@
     </div>
 
     <div class="social-container">
-        <a href="https://wa.me/5581985666394" target="_blank" class="social-btn btn-wa">Falar com Consultor no WhatsApp</a>
-        <a href="https://www.instagram.com/mathenstore/" target="_blank" class="social-btn btn-ig">Ver Entregas no Instagram</a>
+        <a href="https://wa.me/5581985666394" target="_blank" class="social-btn btn-wa">WhatsApp</a>
+        <a href="https://www.instagram.com/mathenstore/" target="_blank" class="social-btn btn-ig">Instagram</a>
     </div>
 </div>
 
