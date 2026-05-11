@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mathen Store</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="hero">
+    <div>
+        <h1>Mathen Store</h1>
+        <p>iPhones premium em Recife</p>
+        <a class="btn" href="https://wa.me/5581999999999" target="_blank">Falar no WhatsApp</a>
+    </div>
+</header>
+
+<section class="add-phone">
+    <h2>Adicionar iPhone</h2>
+
+    <form id="form">
+        <input type="text" id="modelo" placeholder="Modelo">
+        <input type="text" id="armazenamento" placeholder="Armazenamento">
+        <input type="text" id="cor" placeholder="Cor">
+        <input type="number" id="bateria" placeholder="Saúde da bateria (%)">
+        <input type="number" id="preco" placeholder="Preço">
+
+        <select id="status">
+            <option value="Disponível">Disponível</option>
+            <option value="Vendido">Vendido</option>
+        </select>
+
+        <button type="submit">Salvar iPhone</button>
+    </form>
+</section>
+
+<section class="catalogo">
+    <h2>📱 Catálogo</h2>
+    <div id="lista" class="cards"></div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
