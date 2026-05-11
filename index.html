@@ -5,77 +5,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MTH STORE | Premium iPhones</title>
     <style>
-        /* --- CSS: VISUAL PREMIUM E GRADE ESTILO SHOPEE --- */
-        :root {
-            --dourado: #d4af37;
-            --preto: #0b0b0b;
-            --cinza: #1a1a1a;
-            --branco: #ffffff;
-        }
-
+        /* --- ESTILOS ORIGINAIS RESTAURADOS --- */
         body {
-            background-color: var(--preto);
-            color: var(--branco);
-            font-family: 'Segoe UI', sans-serif;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
             margin: 0;
-            padding-bottom: 100px; /* Espaço para o carrinho fixo */
+            padding-bottom: 90px;
         }
 
         header {
             padding: 20px;
             text-align: center;
-            border-bottom: 1px solid var(--dourado);
+            border-bottom: 1px solid #d4af37;
+        }
+
+        .logo-mth {
+            width: 120px; /* Ajuste conforme o tamanho da sua logo */
+            margin-bottom: 10px;
         }
 
         .container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* 2 colunas no celular */
-            gap: 10px;
-            padding: 10px;
-            max-width: 1000px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 15px;
+            max-width: 1200px;
             margin: auto;
         }
 
         .product-card {
-            background: var(--cinza);
-            border-radius: 8px;
+            background: #111;
+            border-radius: 12px;
+            border: 1px solid #222;
             overflow: hidden;
-            border: 1px solid #333;
-            display: flex;
-            flex-direction: column;
+            transition: 0.3s;
         }
 
         .product-card img {
             width: 100%;
             aspect-ratio: 1/1;
             object-fit: cover;
-            cursor: pointer;
         }
 
-        .info { padding: 10px; text-align: center; }
-        .info h3 { font-size: 0.9rem; margin: 5px 0; height: 40px; }
-        .price { color: var(--dourado); font-weight: bold; font-size: 1.1rem; }
+        .info { padding: 12px; text-align: center; }
+        .price { color: #d4af37; font-weight: bold; font-size: 1.2rem; }
 
-        .btn-add {
+        .btn-carrinho {
             background: transparent;
-            border: 1px solid var(--dourado);
-            color: var(--dourado);
+            border: 1px solid #d4af37;
+            color: #d4af37;
             width: 100%;
-            padding: 8px;
+            padding: 10px;
             margin-top: 10px;
-            cursor: pointer;
+            border-radius: 6px;
             font-weight: bold;
-            border-radius: 4px;
+            cursor: pointer;
         }
 
-        /* --- CSS: SISTEMA DA GALERIA (MODAL) --- */
+        /* --- SISTEMA DE GALERIA QUE VOCÊ PEDIU --- */
         .modal {
             display: none;
             position: fixed;
             top: 0; left: 0;
             width: 100%; height: 100%;
             background: rgba(0,0,0,0.98);
-            z-index: 2000;
+            z-index: 9999;
             overflow-y: auto;
         }
 
@@ -85,143 +80,115 @@
             max-width: 500px;
             margin: 20px auto;
             padding: 20px;
-            position: relative;
         }
 
-        .btn-voltar {
-            color: var(--dourado);
+        .fechar-galeria {
+            color: #d4af37;
             text-decoration: none;
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: bold;
         }
 
-        .carrossel {
+        .carrossel-detalhes {
             display: flex;
             overflow-x: auto;
             gap: 10px;
+            margin: 20px 0;
             scroll-snap-type: x mandatory;
-            margin-bottom: 20px;
         }
 
-        .carrossel img {
+        .carrossel-detalhes img {
             width: 100%;
             flex-shrink: 0;
             scroll-snap-align: start;
             border-radius: 10px;
         }
 
-        .btn-whatsapp {
+        .btn-wa-final {
             display: block;
             background: #25d366;
-            color: white;
+            color: #fff;
             text-align: center;
             padding: 15px;
-            text-decoration: none;
             border-radius: 8px;
+            text-decoration: none;
             font-weight: bold;
             margin-top: 20px;
         }
 
-        /* --- CSS: CARRINHO FIXO --- */
-        .carrinho-fixo {
+        /* --- CARRINHO FIXO --- */
+        .footer-cart {
             position: fixed;
             bottom: 0;
             width: 100%;
             background: #000;
-            border-top: 2px solid var(--dourado);
-            padding: 15px 20px;
+            border-top: 2px solid #d4af37;
+            padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-sizing: border-box;
-            z-index: 1500;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1 style="color: var(--dourado); margin:0;">MTH STORE</h1>
+        <!-- Restaurando sua Logo -->
+        <img src="logo.png" alt="MTH STORE" class="logo-mth">
     </header>
 
-    <main class="container">
-        <!-- PRODUTO 1 -->
+    <div class="container">
+        <!-- PRODUTO 1: IPHONE 12 PRO MAX -->
         <div class="product-card">
-            <a href="#prod1">
-                <img src="foto-capa-iphone12.jpg" alt="iPhone 12">
+            <!-- Agora o clique na imagem abre o Modal #detalhes1 -->
+            <a href="#detalhes1">
+                <img src="iphone12promax.jpg" alt="iPhone 12 Pro Max">
             </a>
             <div class="info">
-                <h3>iPhone 12 Pro Max 128GB</h3>
-                <span class="price">R$ 3.800,00</span>
-                <button class="btn-add" onclick="adicionar('iPhone 12', 3800)">Adicionar</button>
+                <h3>iPhone 12 Pro Max</h3>
+                <span class="price">R$ 3.800</span>
+                <button class="btn-carrinho" onclick="add('iPhone 12 Pro Max', 3800)">+ Carrinho</button>
             </div>
         </div>
 
-        <!-- PRODUTO 2 -->
-        <div class="product-card">
-            <a href="#prod2">
-                <img src="foto-capa-iphone11.jpg" alt="iPhone 11">
-            </a>
-            <div class="info">
-                <h3>iPhone 11 64GB</h3>
-                <span class="price">R$ 2.100,00</span>
-                <button class="btn-add" onclick="adicionar('iPhone 11', 2100)">Adicionar</button>
-            </div>
-        </div>
-    </main>
+        <!-- Adicione outros produtos seguindo o mesmo padrão de ID (#detalhes2, etc) -->
+    </div>
 
-    <!-- GALERIA PRODUTO 1 -->
-    <div id="prod1" class="modal">
+    <!-- MODAL DE GALERIA DO IPHONE 12 -->
+    <div id="detalhes1" class="modal">
         <div class="modal-content">
-            <a href="#" class="btn-voltar">← Voltar para a Loja</a>
-            <div class="carrossel">
-                <img src="ip12-foto1.jpg">
-                <img src="ip12-foto2.jpg">
-                <img src="ip12-foto3.jpg">
+            <a href="#" class="fechar-galeria">← Voltar</a>
+            
+            <div class="carrossel-detalhes">
+                <!-- Coloque aqui os links das fotos extras -->
+                <img src="iphone12promax.jpg" alt="Foto 1">
+                <img src="iphone12-lado.jpg" alt="Foto 2">
+                <img src="iphone12-bateria.jpg" alt="Foto 3">
             </div>
+
             <h2>iPhone 12 Pro Max</h2>
-            <p>Detalhes: 128GB, Saúde 87%, Azul Pacífico.</p>
-            <span class="price">R$ 3.800,00</span>
-            <a href="https://wa.me/5581999999999?text=Quero+o+iPhone+12" class="btn-whatsapp">COMPRAR NO WHATSAPP</a>
+            <p>128GB | Saúde 87% | Impecável</p>
+            <span class="price">R$ 3.800</span>
+
+            <a href="https://wa.me/5581999999999?text=Quero+o+iPhone+12" class="btn-wa-final">COMPRAR NO WHATSAPP</a>
         </div>
     </div>
 
-    <!-- GALERIA PRODUTO 2 -->
-    <div id="prod2" class="modal">
-        <div class="modal-content">
-            <a href="#" class="btn-voltar">← Voltar para a Loja</a>
-            <div class="carrossel">
-                <img src="ip11-foto1.jpg">
-                <img src="ip11-foto2.jpg">
-            </div>
-            <h2>iPhone 11 64GB</h2>
-            <p>Detalhes: Branco, Completo, impecável.</p>
-            <span class="price">R$ 2.100,00</span>
-            <a href="https://wa.me/5581999999999?text=Quero+o+iPhone+11" class="btn-whatsapp">COMPRAR NO WHATSAPP</a>
-        </div>
-    </div>
-
-    <!-- CARRINHO FIXO NO RODAPÉ -->
-    <div class="carrinho-fixo">
-        <div>
-            Carrinho (<span id="qtd">0</span>): <span id="total" style="color:var(--dourado); font-weight:bold;">R$ 0,00</span>
-        </div>
-        <a href="https://wa.me/5581999999999?text=Finalizar+meu+pedido" style="background:var(--dourado); color:black; padding:8px 15px; border-radius:5px; text-decoration:none; font-weight:bold;">Finalizar</a>
+    <!-- BARRA DO CARRINHO -->
+    <div class="footer-cart">
+        <div>Total: <span id="total" style="color:#d4af37; font-weight:bold;">R$ 0</span></div>
+        <a href="https://wa.me/5581999999999?text=Finalizar+Pedido" style="background:#d4af37; color:#000; padding:10px 20px; border-radius:5px; text-decoration:none; font-weight:bold;">Finalizar</a>
     </div>
 
     <script>
-        /* --- JS: LÓGICA DO CARRINHO --- */
-        let valorTotal = 0;
-        let qtdItens = 0;
-
-        function adicionar(nome, preco) {
-            valorTotal += preco;
-            qtdItens++;
-            document.getElementById('qtd').innerText = qtdItens;
-            document.getElementById('total').innerText = valorTotal.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-            alert(nome + " adicionado ao carrinho!");
+        let total = 0;
+        function add(nome, preco) {
+            total += preco;
+            document.getElementById('total').innerText = "R$ " + total.toLocaleString('pt-BR');
+            alert(nome + " adicionado!");
         }
     </script>
+
 </body>
 </html>
