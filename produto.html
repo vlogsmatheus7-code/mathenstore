@@ -6,109 +6,44 @@
     <title>Detalhes | MTH STORE</title>
     <style>
         :root { --gold: #d4af37; }
-        body { margin: 0; padding: 0; background-color: #050505; color: white; font-family: 'Segoe UI', sans-serif; padding-bottom: 50px; }
-        
-        header { 
-            background-color: #000; padding: 15px 0; border-bottom: 1px solid var(--gold); 
-            text-align: center; position: relative;
+        body { 
+            margin: 0; background-image: url('fundo-preto-premium.jpg'); 
+            background-attachment: fixed; background-size: cover;
+            color: white; font-family: sans-serif; text-align: center;
         }
-        .btn-voltar { 
-            position: absolute; left: 20px; top: 50%; transform: translateY(-50%);
-            text-decoration: none; color: var(--gold); font-size: 1.5rem; 
+        .header-simple { padding: 30px; background: rgba(0,0,0,0.8); border-bottom: 1px solid var(--gold); }
+        .product-card { 
+            max-width: 500px; margin: 40px auto; background: rgba(15,15,15,0.9); 
+            padding: 30px; border-radius: 20px; border: 1px solid var(--gold);
+            backdrop-filter: blur(15px);
         }
-        .brand-name-sm {
-            margin: 0; font-family: 'Times New Roman', serif; letter-spacing: 4px;
-            color: var(--gold); font-size: 1.2rem; text-transform: uppercase;
+        .product-img { width: 100%; border-radius: 15px; margin-bottom: 20px; }
+        .buy-btn { 
+            display: block; background: #25d366; color: white; padding: 20px; 
+            text-decoration: none; border-radius: 40px; font-weight: bold; margin-top: 20px;
         }
-        .brand-name-sm span { color: #fff; font-family: sans-serif; font-size: 0.8rem; letter-spacing: 2px; }
-
-        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
-        .galeria-container { background: #111; border-radius: 20px; padding: 15px; border: 1px solid #222; margin-bottom: 20px; }
-        .foto-principal-box { width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #000; margin-bottom: 15px; }
-        .foto-principal { max-width: 100%; max-height: 100%; object-fit: contain; }
-        
-        .miniaturas-container { display: flex; gap: 10px; overflow-x: auto; }
-        .miniatura { width: 65px; height: 65px; border-radius: 8px; border: 2px solid #333; cursor: pointer; object-fit: cover; opacity: 0.4; }
-        .miniatura.active { border-color: var(--gold); opacity: 1; }
-
-        .detalhes-box { background: #111; border-radius: 20px; padding: 25px; border: 1px solid #222; }
-        .product-title { margin: 0; font-size: 1.7rem; }
-        .tag-gb-lg { display: inline-block; border: 1px solid var(--gold); color: var(--gold); font-size: 0.8rem; padding: 4px 12px; border-radius: 6px; margin: 10px 0; }
-        .valor-lg { font-size: 2.2rem; font-weight: bold; color: white; display: block; margin-bottom: 20px; }
-        
-        .pagamento-grid { border-top: 1px solid #222; padding-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 0.9rem; color: #bbb; }
-        .btn-add-cart { display: block; width: 100%; padding: 20px; background: var(--gold); color: black; border: none; border-radius: 40px; font-weight: bold; font-size: 1.2rem; margin-top: 30px; }
     </style>
 </head>
 <body>
-
-<header>
-    <a href="index.html" class="btn-voltar">←</a>
-    <h1 class="brand-name-sm">MTH <span>STORE</span></h1>
-</header>
-
-<div class="container">
-    <div class="galeria-container">
-        <div class="foto-principal-box"><img id="fotoPrincipal" src="" class="foto-principal"></div>
-        <div id="miniaturasContainer" class="miniaturas-container"></div>
+    <div class="header-simple">
+        <a href="index.html"><img src="logo-dourado.png" width="120"></a>
+    </div>
+    <div class="product-card">
+        <img id="p-img" class="product-img" src="">
+        <h1 id="p-name">Carregando...</h1>
+        <p id="p-price" style="font-size: 2rem; color: var(--gold); font-weight: bold;"></p>
+        <a href="https://wa.me/5581985666394" class="buy-btn">Confirmar Pedido no WhatsApp</a>
     </div>
 
-    <div class="detalhes-box">
-        <h1 id="productTitle"></h1>
-        <span id="tagGb" class="tag-gb-lg"></span>
-        <span id="productPrice" class="valor-lg"></span>
-
-        <div class="pagamento-grid">
-            <div>✅ PIX (Desconto)</div>
-            <div>💳 Crédito 12x</div>
-            <div style="grid-column: span 2; color: #ffa500; font-style: italic;">* No cartão, juros por conta do comprador.</div>
-        </div>
-
-        <button onclick="addToCart()" class="btn-add-cart">Adicionar ao Carrinho</button>
-    </div>
-</div>
-
-<script>
-    const dadosProdutos = {
-        '16promax': { nome: 'iPhone 16 Pro Max', gb: '512GB', preco: '5.400,00', fotos: ['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg'] },
-        '15promax': { nome: 'iPhone 15 Pro Max', gb: '512GB', preco: '4.400,00', fotos: ['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg'] },
-        '14promax': { nome: 'iPhone 14 Pro Max', gb: '256GB', preco: '3.600,00', fotos: ['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-pro-finish-unselect-gallery-1-202209?wid=1000&fmt=p-jpg'] },
-        '13promax': { nome: 'iPhone 13 Pro Max', gb: '256GB', preco: '3.100,00', fotos: ['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pro-max-silver-select?wid=1000&fmt=p-jpg'] },
-        '14plus': { nome: 'iPhone 14 Plus', gb: '128GB', preco: '2.500,00', fotos: ['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-finish-select-202209-6-7inch-starlight?wid=1000&fmt=p-jpg'] },
-        'iphone13': { nome: 'iPhone 13', gb: '128GB', preco: '2.100,00', fotos: ['https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-finish-select-202207-midnight?wid=1000&fmt=p-jpg'] }
-    };
-
-    function carregar() {
-        const id = new URLSearchParams(window.location.search).get('id');
-        const p = dadosProdutos[id] || dadosProdutos['16promax'];
-        document.getElementById('productTitle').innerText = p.nome;
-        document.getElementById('tagGb').innerText = p.gb;
-        document.getElementById('productPrice').innerText = 'R$ ' + p.preco;
-        const principal = document.getElementById('fotoPrincipal');
-        principal.src = p.fotos[0];
-        const minis = document.getElementById('miniaturasContainer');
-        p.fotos.forEach((link, i) => {
-            const img = document.createElement('img');
-            img.src = link; img.className = 'miniatura' + (i === 0 ? ' active' : '');
-            img.onclick = () => { 
-                principal.src = link; 
-                document.querySelectorAll('.miniatura').forEach(m => m.classList.remove('active'));
-                img.classList.add('active');
-            };
-            minis.appendChild(img);
-        });
-    }
-
-    function addToCart() {
-        const id = new URLSearchParams(window.location.search).get('id');
-        const p = dadosProdutos[id];
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.push({ nome: p.nome, preco: p.preco, gb: p.gb });
-        localStorage.setItem('cart', JSON.stringify(cart));
-        alert('Adicionado ao carrinho!');
-        window.location.href = 'index.html';
-    }
-    window.onload = carregar;
-</script>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        // Aqui podes adicionar a lógica para mudar a imagem/nome baseada no ID
+        if(id === '16promax') {
+            document.getElementById('p-name').innerText = "iPhone 16 Pro Max";
+            document.getElementById('p-price').innerText = "R$ 5.400";
+            document.getElementById('p-img').src = "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg";
+        }
+    </script>
 </body>
 </html>
