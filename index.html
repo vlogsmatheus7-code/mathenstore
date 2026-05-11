@@ -43,6 +43,29 @@
             font-size: 0.9rem;
         }
 
+        /* Banner de Destaque (Aumentando o site) */
+        .hero {
+            background-color: #000;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h2 { font-size: 3rem; margin: 0; }
+        .hero p { font-size: 1.2rem; color: #86868b; margin-top: 10px; }
+
+        /* Faixa de Benefícios */
+        .benefits {
+            background: white;
+            padding: 25px 20px;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #d2d2d7;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
         /* Grade de Produtos */
         .container {
             max-width: 1100px;
@@ -67,8 +90,9 @@
         .produto-imagem img {
             width: 100%;
             height: 250px;
-            object-fit: cover;
-            background-color: #eee;
+            object-fit: contain; /* Ajustado para não cortar a foto */
+            background-color: #fff;
+            padding-top: 20px;
         }
 
         .produto-info { padding: 25px; }
@@ -88,6 +112,16 @@
         }
 
         .botao-whatsapp:hover { background-color: #128c7e; }
+
+        /* Rodapé Profissional */
+        footer {
+            background: #1d1d1f;
+            color: #86868b;
+            padding: 60px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .footer-logo { color: white; margin-bottom: 15px; display: block; font-size: 1.2rem; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -98,6 +132,19 @@
             <a href="https://wa.me/5581985666394" class="btn-header">WhatsApp</a>
         </div>
     </header>
+
+    <!-- Novo Banner -->
+    <section class="hero">
+        <h2>O iPhone que você procura.</h2>
+        <p>Aparelhos selecionados com garantia e o melhor preço de Pernambuco.</p>
+    </section>
+
+    <!-- Faixa de Confiança -->
+    <section class="benefits">
+        <span>🚚 Entrega em mãos em Recife</span>
+        <span>🛡️ Garantia MathenStore</span>
+        <span>💎 Procedência Garantida</span>
+    </section>
 
     <div class="container">
         
@@ -115,29 +162,36 @@
 
         <div class="produto-card">
             <div class="produto-imagem">
-                <img src="iphone13.jpg" alt="iPhone 13">
+                <img src="iphone15promax.jpg" alt="iPhone 15 Pro Max">
             </div>
             <div class="produto-info">
                 <h3>iPhone 15 pro max</h3>
                 <p class="capacidade">512GB • seminovo</p>
                 <div class="preco">R$ 4.599,00</div>
-                <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone+13" class="botao-whatsapp">Comprar</a>
+                <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone+15+pro+max" class="botao-whatsapp">Comprar</a>
             </div>
         </div>
 
         <div class="produto-card">
             <div class="produto-imagem">
-                <img src="iphone15pro.jpg" alt="iPhone 15 Pro">
+                <img src="iphone14promax.jpg" alt="iPhone 14 Pro Max">
             </div>
             <div class="produto-info">
                 <h3>iPhone 14 pro max </h3>
                 <p class="capacidade">256GB • Titânio</p>
                 <div class="preco">R$ 3.599,00</div>
-                <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone+15+Pro" class="botao-whatsapp">Comprar</a>
+                <a href="https://wa.me/5581985666394?text=Tenho+interesse+no+iPhone+14+pro+max" class="botao-whatsapp">Comprar</a>
             </div>
         </div>
 
     </div>
+
+    <!-- Novo Rodapé -->
+    <footer>
+        <span class="footer-logo">Mathen<span>Store</span></span>
+        <p>Especialista em Apple em Recife/PE</p>
+        <p>© 2026 Todos os direitos reservados.</p>
+    </footer>
 
 </body>
 </html>
