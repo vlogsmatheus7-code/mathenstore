@@ -18,7 +18,81 @@
 </header>
 
 <section class="add-phone">
-    <h2>Adicionar iPhone</h2>
+    <h2>Adicionar iPhone</h2>  
+    <div class="produto-card">
+        <div class="produto-imagem">
+            <img src="iphone14plus.jpg" alt="iPhone 14 Plus 256GB">
+        </div>
+        <div class="produto-info">
+            <h3>iPhone 14 Plus</h3>
+            <p class="capacidade">256GB</p>
+            <p class="preco">R$ 2.600,00</p>
+            <a href="https://wa.me/5500000000000?text=Olá!+Tenho+interesse+no+iPhone+14+Plus" target="_blank" class="botao-whatsapp">
+                Comprar pelo WhatsApp
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    .add-phone {
+        padding: 40px 20px;
+        text-align: center;
+    }
+
+    .produto-card {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        max-width: 300px;
+        margin: 20px auto;
+        overflow: hidden;
+        font-family: sans-serif;
+        transition: transform 0.3s ease;
+    }
+
+    .produto-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .produto-imagem img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .produto-info {
+        padding: 20px;
+    }
+
+    .produto-info h3 {
+        margin: 0;
+        font-size: 1.4rem;
+        color: #333;
+    }
+
+    .capacidade {
+        color: #666;
+        margin: 5px 0;
+    }
+
+    .preco {
+        font-size: 1.6rem;
+        font-weight: bold;
+        color: #27ae60;
+        margin: 15px 0;
+    }
+
+    .botao-whatsapp {
+        display: block;
+        background-color: #25d366;
+        color: white;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: bold;
+    }
+</style>
 
     <form id="form">
         <input type="text" id="modelo" placeholder="Modelo">
