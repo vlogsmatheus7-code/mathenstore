@@ -16,7 +16,7 @@
 
         .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
 
-        /* GALERIA ESTILO SHOPEE */
+        /* GALERIA */
         .galeria-container { background: var(--card-bg); border-radius: 15px; padding: 15px; border: 1px solid #222; margin-bottom: 20px; }
         .foto-principal-box { width: 100%; height: 350px; display: flex; align-items: center; justify-content: center; overflow: hidden; border-radius: 10px; margin-bottom: 15px; background: #000; }
         .foto-principal { max-width: 100%; max-height: 100%; object-fit: contain; }
@@ -32,7 +32,7 @@
         
         .valor-lg { font-size: 2.2rem; font-weight: bold; color: white; display: block; margin: 10px 0; }
         
-        /* PAGAMENTO */
+        /* PAGAMENTO (SEM GARANTIA) */
         .pagamento-grid { margin-top: 20px; border-top: 1px solid #222; padding-top: 15px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
         .pag-item { font-size: 0.85rem; color: #aaa; display: flex; align-items: center; gap: 5px; }
         .juros-aviso { grid-column: span 2; font-size: 0.75rem; color: #ffa500; font-style: italic; margin-top: 5px; }
@@ -69,7 +69,6 @@
             <div class="pag-item">✅ PIX</div>
             <div class="pag-item">💳 Crédito 12x</div>
             <div class="pag-item">💵 Espécie</div>
-            <div class="pag-item">🛡️ Garantia</div>
             <div class="juros-aviso">* No cartão, juros da maquininha por conta do comprador.</div>
         </div>
 
@@ -78,7 +77,6 @@
 </div>
 
 <script>
-    // BASE DE DADOS COMPLETA (6 IPHONES)
     const dadosProdutos = {
         '16promax': {
             nome: 'iPhone 16 Pro Max',
@@ -86,8 +84,8 @@
             preco: '5.400,00',
             fotos: [
                 'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-2-202409?wid=1000&fmt=p-jpg',
-                'https://via.placeholder.com/600/111/d4af37?text=Foto+2+16PM',
-                'https://via.placeholder.com/600/111/d4af37?text=Foto+3+16PM'
+                'https://via.placeholder.com/600/111/d4af37?text=Foto+Real+1',
+                'https://via.placeholder.com/600/111/d4af37?text=Foto+Real+2'
             ]
         },
         '15promax': {
@@ -95,8 +93,7 @@
             gb: '512GB',
             preco: '4.400,00',
             fotos: [
-                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg',
-                'https://via.placeholder.com/600/111/d4af37?text=Foto+Real+15PM'
+                'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-pro-finish-select-202309-6-7inch-naturaltitanium?wid=1000&fmt=p-jpg'
             ]
         },
         '14promax': {
@@ -130,13 +127,11 @@
         const id = urlParams.get('id');
         const p = dadosProdutos[id] || dadosProdutos['16promax'];
 
-        // Preencher Textos
         document.getElementById('productTitle').innerText = p.nome;
         document.getElementById('tagGb').innerText = p.gb;
         document.getElementById('productPrice').innerText = 'R$ ' + p.preco;
         document.title = p.nome + " | MathenStore";
 
-        // Preencher Galeria
         const fotoPrincipal = document.getElementById('fotoPrincipal');
         const miniaturasContainer = document.getElementById('miniaturasContainer');
         
